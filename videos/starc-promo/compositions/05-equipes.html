@@ -1,0 +1,194 @@
+<template>
+  <style>
+    @font-face { font-family: "Bebas Neue"; src: url("assets/fonts/bebas_neue_latin_400_normal.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat_latin_500_normal.woff2") format("woff2"); font-weight: 500; }
+    @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat_latin_600_normal.woff2") format("woff2"); font-weight: 600; }
+
+    #root { position: absolute; inset: 0; overflow: hidden; color: #ffffff; font-family: "Montserrat", sans-serif; }
+    .s5-bg { position: absolute; inset: 0; background: #000000; }
+    .s5-main { position: absolute; inset: 0; transform-origin: 50% 50%; }
+    .s5-world { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; }
+
+    .s5-trk { position: absolute; left: 0; width: 1920px; height: 200px; }
+    .s5-line { position: absolute; left: 200px; top: 139px; width: 1520px; height: 2.5px; background: #ffffff; }
+    .s5-rollers { position: absolute; left: 200px; top: 146px; width: 1520px; height: 14px; overflow: hidden; }
+    .s5-rollers svg { position: absolute; left: 0; top: 0; width: 1520px; height: 14px; }
+    .s5-rollers line { stroke: #ffffff; stroke-width: 7; stroke-dasharray: 2 22; }
+    .s5-node { position: absolute; top: 126px; width: 28px; height: 28px; margin-left: -14px; border-radius: 50%; border: 2.5px solid #ffffff; background: #000000; }
+    .s5-st { position: absolute; top: 176px; width: 300px; margin-left: -150px; text-align: center; }
+    .s5-st-n { font-family: "Bebas Neue", sans-serif; font-size: 26px; letter-spacing: 0.1em; }
+    .s5-st-t { font-family: "Bebas Neue", sans-serif; font-size: 46px; line-height: 1; letter-spacing: 0.02em; }
+    .s5-token { position: absolute; left: 140px; top: -24px; width: 120px; height: 120px; }
+    .s5-token svg { width: 120px; height: 120px; overflow: visible; }
+
+    .s5-team { position: absolute; left: 120px; width: 180px; font-family: "Bebas Neue", sans-serif; font-size: 40px; line-height: 40px; letter-spacing: 0.04em; }
+
+    .s5-svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: visible; }
+    .s5-svg path { fill: none; stroke: #ffffff; stroke-width: 2; stroke-dasharray: 1; stroke-dashoffset: 1; }
+
+    .s5-side { position: absolute; left: 1290px; top: 112px; width: 540px; }
+    .s5-head { display: flex; align-items: center; gap: 22px; }
+    .s5-num { font-family: "Bebas Neue", sans-serif; font-size: 34px; letter-spacing: 0.06em; }
+    .s5-dash { width: 64px; height: 2px; background: #ffffff; transform-origin: 0 50%; }
+    .s5-label { font-size: 17px; font-weight: 600; letter-spacing: 0.38em; }
+    .s5-title { margin-top: 6px; height: 150px; overflow: hidden; }
+    .s5-title span { display: block; font-family: "Bebas Neue", sans-serif; font-size: 156px; line-height: 150px; }
+    .s5-support { margin-top: 44px; font-size: 16px; font-weight: 600; letter-spacing: 0.36em; }
+    .s5-chip { display: flex; align-items: center; gap: 18px; height: 76px; }
+    .s5-chip svg { width: 44px; height: 44px; flex: 0 0 44px; overflow: visible; }
+    .s5-chip svg path { fill: none; stroke: #ffffff; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+    .s5-chip span { font-family: "Bebas Neue", sans-serif; font-size: 46px; line-height: 1; white-space: nowrap; }
+
+    .s5-word { position: absolute; top: 846px; }
+    .s5-word-big { height: 128px; overflow: hidden; }
+    .s5-word-big span { display: block; font-family: "Bebas Neue", sans-serif; font-size: 132px; line-height: 128px; }
+    .s5-word-sub { margin-top: 10px; font-size: 21px; font-weight: 500; letter-spacing: 0.06em; }
+  </style>
+
+  <div id="root" data-composition-id="s05-equipes" data-width="1920" data-height="1080">
+    <div class="s5-bg clip" id="s5-bg" data-start="0" data-duration="8" data-track-index="0"></div>
+    <div class="s5-main clip" id="s5-main" data-start="0" data-duration="8" data-track-index="1">
+      <div class="s5-world" id="s5-world"></div>
+
+      <div class="s5-team" style="top: 280px;">ÉQUIPE 1</div>
+      <div class="s5-team" style="top: 430px;">ÉQUIPE 2</div>
+      <div class="s5-team" style="top: 580px;">ÉQUIPE 3</div>
+      <div class="s5-team" style="top: 730px;">ÉQUIPE 4</div>
+
+      <svg class="s5-svg" viewBox="0 0 1920 1080">
+        <path id="s5-conn" pathLength="1" d="M1102 300 H1200 M1102 450 H1200 M1102 600 H1200 M1102 750 H1200 M1200 300 V750 M1200 525 H1262" />
+      </svg>
+
+      <div class="s5-side">
+        <div class="s5-head">
+          <span class="s5-num" id="s5-num">03</span>
+          <span class="s5-dash" id="s5-dash"></span>
+          <span class="s5-label" id="s5-label">CAPACITÉ</span>
+        </div>
+        <div class="s5-title"><span id="s5-title">4 ÉQUIPES</span></div>
+        <div class="s5-support" id="s5-support">EN SOUTIEN</div>
+        <div class="s5-chip"><svg viewBox="0 0 48 48"><path d="M7 41 V9 L39 41 Z M13 35 V24 L24 35 Z" /></svg><span>DESSINATEURS 2D</span></div>
+        <div class="s5-chip"><svg viewBox="0 0 48 48"><path d="M24 5 L41 14.5 V33.5 L24 43 L7 33.5 V14.5 Z M7 14.5 L24 24 L41 14.5 M24 24 V43" /></svg><span>DESSINATEURS 3D</span></div>
+        <div class="s5-chip"><svg viewBox="0 0 48 48"><path d="M8 9 H40 M8 39 H40 M24 9 V39 M8 9 V13 M40 9 V13 M8 39 V35 M40 39 V35" /></svg><span>INGÉNIEURS</span></div>
+        <div class="s5-chip"><svg viewBox="0 0 48 48"><path d="M15 22 V11 H33 V22 M10 22 H38 V33 H10 Z M13 33 V40 M35 33 V40" /></svg><span>ARCHITECTES D'INTÉRIEUR</span></div>
+      </div>
+
+      <div class="s5-word" style="left: 120px;">
+        <div class="s5-word-big"><span id="s5-cap">CAPACITÉ.</span></div>
+        <div class="s5-word-sub" id="s5-cap-sub">Une forte charge de travail, absorbée.</div>
+      </div>
+      <div class="s5-word" style="left: 760px;">
+        <div class="s5-word-big"><span id="s5-rea">RÉACTIVITÉ.</span></div>
+        <div class="s5-word-sub" id="s5-rea-sub">Les urgences, traitées sans attendre.</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const stations = [200, 580, 960, 1340, 1720];
+      const labels = ["ESQUISSE", "PERMIS", "EXÉCUTION", "APPEL D'OFFRES", "CHANTIER"];
+      const fills = [0.2, 0.4, 0.6, 0.8, 1.0];
+      const world = document.getElementById("s5-world");
+      const house = "M14 56 L60 16 L106 56 V110 H14 Z";
+
+      // Situation de départ de chaque équipe (déterministe)
+      const teams = [
+        { start: 4 },
+        { start: 2 },
+        { start: 0 },
+        { start: 3 }
+      ];
+
+      function tokenSvg(id, done) {
+        return '<svg viewBox="0 0 120 120"><defs><clipPath id="' + id + '-clip"><path d="' + house + '" /></clipPath></defs>' +
+          '<g clip-path="url(#' + id + '-clip)"><rect id="' + id + '-fill" x="0" y="0" width="120" height="110" fill="#ffffff" /></g>' +
+          '<path d="' + house + '" fill="none" stroke="#ffffff" stroke-width="3" />' +
+          '<path id="' + id + '-open" d="M30 110 V82 H48 V110 M68 70 H92 V90 H68 Z M80 70 V90" fill="none" stroke="#000000" stroke-width="3" style="opacity:' + (done ? 1 : 0) + '" /></svg>';
+      }
+
+      teams.forEach(function (team, k) {
+        const trk = document.createElement("div");
+        trk.className = "s5-trk";
+        trk.id = "s5-trk-" + k;
+        trk.style.top = (500 + 300 * k) + "px";
+        let html = '<div class="s5-line"></div><div class="s5-rollers"><svg viewBox="0 0 1520 14"><line class="s5-roll" x1="0" y1="7" x2="1520" y2="7" /></svg></div>';
+        stations.forEach(function (x, i) {
+          html += '<div class="s5-node" id="s5-node-' + k + '-' + i + '" style="left:' + x + 'px"></div>';
+          if (k === 0) {
+            html += '<div class="s5-st" style="left:' + x + 'px"><div class="s5-st-n">0' + (i + 1) + '</div><div class="s5-st-t">' + labels[i] + '</div></div>';
+          }
+        });
+        html += '<div class="s5-token" id="s5-tok-' + k + '">' + tokenSvg("s5-t" + k, team.start === 4) + '</div>';
+        if (k === 0) html += '<div class="s5-token" id="s5-tok-new">' + tokenSvg("s5-tn", false) + '</div>';
+        trk.innerHTML = html;
+        world.appendChild(trk);
+      });
+
+      const tl = gsap.timeline({ paused: true });
+
+      // État initial : la chaîne de la scène précédente, telle quelle
+      teams.forEach(function (team, k) {
+        const s = team.start;
+        tl.set("#s5-tok-" + k, { x: stations[s] - 200 }, 0);
+        tl.set("#s5-t" + k + "-fill", { scaleY: fills[s], transformOrigin: "50% 100%" }, 0);
+        for (let i = 0; i <= s; i++) tl.set("#s5-node-" + k + "-" + i, { backgroundColor: "#ffffff" }, 0);
+      });
+      tl.set("#s5-tn-fill", { scaleY: 0.2, transformOrigin: "50% 100%" }, 0);
+
+      tl.fromTo(".s5-roll", { strokeDashoffset: -480 }, { strokeDashoffset: -800, duration: 8, ease: "none" }, 0);
+
+      // Zoom arrière : la chaîne devient quatre équipes
+      tl.fromTo("#s5-world", { x: 0, y: 0, scale: 1 }, { x: 230, y: -20, scale: 0.5, duration: 1.5, ease: "power3.inOut" }, 0.15);
+      [1, 2, 3].forEach(function (k, j) {
+        tl.fromTo("#s5-trk-" + k, { opacity: 0, y: 120 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 0.75 + j * 0.15);
+      });
+      tl.fromTo("#s5-main .s5-team", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out", stagger: 0.12 }, 1.45);
+
+      tl.fromTo("#s5-num", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 1.0);
+      tl.fromTo("#s5-dash", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.inOut" }, 1.1);
+      tl.fromTo("#s5-label", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 1.2);
+      tl.fromTo("#s5-title", { yPercent: 135 }, { yPercent: 0, duration: 0.8, ease: "expo.out" }, 1.25);
+
+      // Le projet livré sort, un nouveau projet entre dans l'équipe 1
+      tl.to("#s5-tok-0", { x: stations[4] - 200 + 260, opacity: 0, duration: 0.6, ease: "power3.in" }, 1.8);
+      for (let i = 0; i < 5; i++) tl.to("#s5-node-0-" + i, { backgroundColor: "#000000", duration: 0.3 }, 2.2);
+      tl.fromTo("#s5-tok-new", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.5, ease: "power3.out" }, 2.35);
+      tl.to("#s5-node-0-0", { backgroundColor: "#ffffff", duration: 0.3 }, 2.5);
+
+      // Les équipes avancent en parallèle
+      const pos = [0, teams[1].start, teams[2].start, teams[3].start];
+      const ids = ["#s5-tok-new", "#s5-tok-1", "#s5-tok-2", "#s5-tok-3"];
+      const fillIds = ["#s5-tn-fill", "#s5-t1-fill", "#s5-t2-fill", "#s5-t3-fill"];
+      [3.2, 4.8, 6.4].forEach(function (t0) {
+        ids.forEach(function (id, k) {
+          if (pos[k] >= 4) return;
+          const from = pos[k];
+          const to = from + 1;
+          const t = t0 + k * 0.18;
+          tl.to(id, { x: stations[to] - 200, duration: 0.7, ease: "power3.inOut" }, t);
+          tl.to(fillIds[k], { scaleY: fills[to], duration: 0.5, ease: "power3.out" }, t + 0.55);
+          tl.to("#s5-node-" + k + "-" + to, { backgroundColor: "#ffffff", duration: 0.3 }, t + 0.6);
+          if (to === 4) tl.to(fillIds[k].replace("-fill", "-open"), { opacity: 1, duration: 0.4 }, t + 0.7);
+          pos[k] = to;
+        });
+      });
+
+      // En soutien
+      tl.fromTo("#s5-conn", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 1.0, ease: "power3.inOut" }, 2.5);
+      tl.fromTo("#s5-support", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 2.7);
+      tl.fromTo("#s5-main .s5-chip", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out", stagger: 0.2 }, 2.85);
+
+      // Capacité, réactivité
+      tl.fromTo("#s5-cap", { yPercent: 135 }, { yPercent: 0, duration: 0.8, ease: "expo.out" }, 4.6);
+      tl.fromTo("#s5-cap-sub", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 4.9);
+      tl.fromTo("#s5-rea", { yPercent: 135 }, { yPercent: 0, duration: 0.8, ease: "expo.out" }, 5.6);
+      tl.fromTo("#s5-rea-sub", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 5.9);
+
+      tl.to("#s5-main", { scale: 1.16, filter: "blur(18px)", duration: 0.25, ease: "power3.in" }, 7.75);
+      tl.to("#s5-main", { opacity: 0.15, duration: 0.25, ease: "none" }, 7.75);
+
+      window.__timelines["s05-equipes"] = tl;
+    })();
+  </script>
+</template>
