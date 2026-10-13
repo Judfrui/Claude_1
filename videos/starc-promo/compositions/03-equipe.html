@@ -15,16 +15,14 @@
     .s3-title { position: absolute; left: 120px; top: 140px; height: 126px; overflow: hidden; white-space: nowrap; }
     .s3-title span { display: inline-block; font-family: "Bebas Neue", sans-serif; font-size: 124px; line-height: 126px; letter-spacing: 0.01em; margin-right: 26px; }
 
-    .s3-roof { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: visible; }
-    .s3-roof path { fill: none; stroke: #ffffff; stroke-width: 3; stroke-linejoin: miter; stroke-dasharray: 1; stroke-dashoffset: 1; }
-    .s3-roof .thin { stroke-width: 1.4; }
+    .s3-arc { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: visible; clip-path: polygon(960px 1250.8px, 960px 1250.8px, 960px 1250.8px); }
 
-    .s3-grid { position: absolute; left: 300px; top: 580px; width: 1340px; display: grid; grid-template-columns: repeat(3, 420px); column-gap: 40px; row-gap: 22px; }
-    .s3-role { display: flex; align-items: center; gap: 20px; height: 74px; }
+    .s3-grid { position: absolute; left: 440px; top: 578px; width: 1040px; display: grid; grid-template-columns: repeat(3, 330px); column-gap: 25px; row-gap: 10px; }
+    .s3-role { display: flex; align-items: center; gap: 20px; height: 70px; }
     .s3-role svg { width: 54px; height: 54px; flex: 0 0 54px; overflow: visible; }
     .s3-role svg path, .s3-role svg circle, .s3-role svg rect { fill: none; stroke: #ffffff; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
     .s3-role svg .s3-ic { stroke-dasharray: 1; stroke-dashoffset: 1; }
-    .s3-role-label { font-size: 19px; font-weight: 600; letter-spacing: 0.1em; line-height: 1.32; max-width: 330px; }
+    .s3-role-label { font-size: 19px; font-weight: 600; letter-spacing: 0.1em; line-height: 1.32; max-width: 256px; }
 
     .s3-stats { position: absolute; left: 120px; top: 900px; width: 1680px; display: flex; justify-content: center; align-items: center; gap: 70px; }
     .s3-stat { display: flex; align-items: baseline; gap: 18px; }
@@ -34,19 +32,18 @@
   </style>
 
   <div id="root" data-composition-id="s03-equipe" data-width="1920" data-height="1080">
-    <div class="s3-bg clip" id="s3-bg" data-start="0" data-duration="12" data-track-index="0"></div>
-    <div class="s3-world clip" id="s3-world" data-start="0" data-duration="12" data-track-index="1">
+    <div class="s3-bg clip" id="s3-bg" data-start="0" data-duration="10" data-track-index="0"></div>
+    <div class="s3-world clip" id="s3-world" data-start="0" data-duration="10" data-track-index="1">
       <div class="s3-head">
         <span class="s3-num" id="s3-num">01</span>
         <span class="s3-dash" id="s3-dash"></span>
         <span class="s3-label" id="s3-label">MULTIDISCIPLINARITÉ</span>
       </div>
-      <div class="s3-title" id="s3-title"><span>TOUT</span><span>SOUS</span><span>UN</span><span>MÊME</span><span>TOIT.</span></div>
+      <div class="s3-title" id="s3-title"><span>TOUT</span><span>SOUS</span><span>UN</span><span>MÊME</span><span>TOIT</span></div>
 
-      <svg class="s3-roof" viewBox="0 0 1920 1080">
-        <path id="s3-roof-main" pathLength="1" d="M150 548 L960 318 L1770 548" />
-        <path id="s3-roof-inner" class="thin" pathLength="1" d="M210 548 L960 335 L1710 548" />
-        <path id="s3-roof-chimney" pathLength="1" d="M1340 440 V372 H1400 V457" />
+      <!-- La courbe du logo STARC (entre le A et le R), mesurée sur le fichier du logo et agrandie -->
+      <svg class="s3-arc" id="s3-arc" viewBox="0 0 1920 1080">
+        <path d="M110.0 824.8 A950.8 950.8 0 0 1 1810.0 824.8 L1721.7 824.8 A872.7 872.7 0 0 0 194.5 824.8 Z" fill="#ffffff" />
       </svg>
 
       <div class="s3-grid">
@@ -109,33 +106,46 @@
       tl.fromTo("#s3-label", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 0.4);
       tl.fromTo("#s3-title span", { yPercent: 135 }, { yPercent: 0, duration: 0.75, ease: "expo.out", stagger: 0.09 }, 0.45);
 
-      // Le toit se dessine
-      tl.fromTo("#s3-roof-main", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 1.4, ease: "power3.inOut" }, 1.0);
-      tl.fromTo("#s3-roof-inner", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 1.4, ease: "power3.inOut" }, 1.2);
-      tl.fromTo("#s3-roof-chimney", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.7, ease: "power2.inOut" }, 2.1);
+      // La courbe du logo se trace d'un seul geste : balayage angulaire autour du centre de l'arc
+      const arcEl = document.getElementById("s3-arc");
+      function wedge(p) {
+        const cx = 960, cy = 1250.8, R = 1400, a0 = -156, a = a0 + 132 * p, n = 48;
+        const pts = [cx + "px " + cy + "px"];
+        for (let i = 0; i <= n; i++) {
+          const t = (a0 + (a - a0) * i / n) * Math.PI / 180;
+          pts.push((cx + R * Math.cos(t)).toFixed(1) + "px " + (cy + R * Math.sin(t)).toFixed(1) + "px");
+        }
+        return "polygon(" + pts.join(", ") + ")";
+      }
+      const arcP = { p: 0 };
+      tl.fromTo("#s3-arc", { opacity: 0 }, { opacity: 1, duration: 0.01 }, 0.94);
+      tl.fromTo(arcP, { p: 0 }, {
+        p: 1, duration: 1.5, ease: "power3.inOut",
+        onUpdate: function () { arcEl.style.clipPath = wedge(arcP.p); }
+      }, 0.95);
 
-      // Les métiers entrent un à un sous le toit
+      // Les métiers entrent un à un sous la courbe
       const roles = gsap.utils.toArray("#s3-world .s3-role");
       roles.forEach(function (role, i) {
-        const t = 2.5 + i * 0.58;
+        const t = 2.3 + i * 0.5;
         tl.fromTo(role.querySelectorAll(".s3-ic"), { strokeDashoffset: 1, opacity: 0 }, { strokeDashoffset: 0, opacity: 1, duration: 0.7, ease: "power2.out" }, t);
         tl.fromTo(role.querySelector(".s3-role-label"), { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, t + 0.08);
       });
 
       // Chiffres clés
       const counter = { v: 0 };
-      tl.fromTo("#s3-stat-1", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 8.4);
+      tl.fromTo("#s3-stat-1", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 7.2);
       tl.fromTo(counter, { v: 0 }, {
         v: 25, duration: 1.1, ease: "power2.out",
         onUpdate: function () { document.getElementById("s3-count-25").textContent = Math.round(counter.v); }
-      }, 8.4);
-      tl.fromTo("#s3-sep-1", { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "power3.out" }, 8.75);
-      tl.fromTo("#s3-stat-2", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 8.9);
-      tl.fromTo("#s3-sep-2", { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "power3.out" }, 9.25);
-      tl.fromTo("#s3-stat-3", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 9.4);
+      }, 7.2);
+      tl.fromTo("#s3-sep-1", { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "power3.out" }, 7.55);
+      tl.fromTo("#s3-stat-2", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 7.7);
+      tl.fromTo("#s3-sep-2", { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "power3.out" }, 8.05);
+      tl.fromTo("#s3-stat-3", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 8.2);
 
-      tl.to("#s3-world", { scale: 1.16, filter: "blur(18px)", duration: 0.25, ease: "power3.in" }, 11.75);
-      tl.to("#s3-world", { opacity: 0.15, duration: 0.25, ease: "none" }, 11.75);
+      tl.to("#s3-world", { scale: 1.16, filter: "blur(18px)", duration: 0.25, ease: "power3.in" }, 9.75);
+      tl.to("#s3-world", { opacity: 0.15, duration: 0.25, ease: "none" }, 9.75);
 
       window.__timelines["s03-equipe"] = tl;
     })();

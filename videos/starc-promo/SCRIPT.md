@@ -8,8 +8,8 @@ et activer la piste `el-voiceover` dans `index.html` (voir le commentaire).
 | Temps | Scène | Texte |
 |-------|-------|-------|
 | 0 à 8 s | 01 | Du premier trait à la dernière pierre, construire demande de la rigueur. |
-| 8 à 12 s | 02 | STARC, studio d'architecture à Gembloux. |
-| 12 à 24 s | 03 | Architectes, ingénieurs, responsable PEB, auditeurs énergétiques, spécialistes en hydrologie, architectes d'intérieur : toutes les compétences sous un même toit. Sans sous-traitance, avec un seul interlocuteur. |
+| 8 à 14 s | 02 | STARC, studio d'architecture à Gembloux. |
+| 14 à 24 s | 03 | Architectes, ingénieurs, responsable PEB, auditeurs énergétiques, spécialistes en hydrologie, architectes d'intérieur : toutes les compétences sous un même toit. Sans sous-traitance, avec un seul interlocuteur. |
 | 24 à 38 s | 04 | Notre bureau est organisé comme une chaîne de montage. Dans chaque équipe, un architecte « gentil » conçoit votre projet et obtient le permis. Un architecte « méchant » prend le relais : dossier d'exécution, appel d'offres et suivi de chantier. Chacun connaît son rôle, et le maîtrise parfaitement. |
 | 38 à 46 s | 05 | Quatre équipes, épaulées par nos dessinateurs, nos ingénieurs et nos architectes d'intérieur : de quoi absorber une forte charge de travail, et réagir vite en cas d'urgence. |
 | 46 à 54 s | 06 | Scanner 3D, drones, rendus photoréalistes : nous travaillons avec des outils à la pointe de la technologie. |
