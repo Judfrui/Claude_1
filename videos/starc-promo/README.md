@@ -52,7 +52,7 @@ python3 tools/make_bgm.py bgm_raw.wav   # régénérer la musique (puis loudnorm
 
 ## Voix off
 
-Voix générée avec Magnific (voix « Julien Bouchard »), une réplique par scène :
+Voix générée avec Magnific (voix « Charon », accent neutre), une réplique par scène :
 texte, temps de départ et liens vers les créations Magnific dans `SCRIPT.md`.
 Pour changer une réplique, remplacer le fichier dans `assets/audio/voix/`,
 ajuster `data-start` et `data-duration` de la piste correspondante dans
