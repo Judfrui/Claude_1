@@ -71,8 +71,15 @@ As this project is new, the structure will be defined as development progresses.
 <root>/
 ├── CLAUDE.md          # This file
 ├── README.md          # Project overview and setup instructions
-└── ...                # To be added
+└── videos/
+    └── starc-promo/   # HyperFrames promo film for STARC (see its README.md)
 ```
+
+Video projects under `videos/` are HyperFrames compositions (HTML + GSAP).
+Validate with `npx hyperframes lint` and render with
+`npx hyperframes render --quality delivery -o renders/<name>.mp4`.
+STARC visuals follow the brand charter: black and white only, Bebas Neue
+titles, Montserrat text, official logo files inserted as images.
 
 ---
 

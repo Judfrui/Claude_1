@@ -1,0 +1,87 @@
+<template>
+  <style>
+    @font-face { font-family: "Bebas Neue"; src: url("assets/fonts/bebas_neue_latin_400_normal.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat_latin_600_normal.woff2") format("woff2"); font-weight: 600; }
+
+    #root { position: absolute; inset: 0; overflow: hidden; color: #ffffff; font-family: "Montserrat", sans-serif; }
+    .s9-bg { position: absolute; inset: 0; background: #000000; }
+    .s9-world { position: absolute; inset: 0; transform-origin: 50% 50%; }
+    .s9-mosaic { position: absolute; left: -80px; top: -45px; width: 2080px; height: 1170px; transform-origin: 1040px 585px; }
+    .s9-tile { position: absolute; width: 160px; height: 90px; padding: 2px; }
+    .s9-tile img { width: 156px; height: 86px; object-fit: cover; display: block; }
+    .s9-tile.hero { padding: 0; z-index: 1; }
+    .s9-tile.hero img { width: 160px; height: 90px; }
+    .s9-shade { position: absolute; inset: 0; background: #000000; }
+
+    .s9-count { position: absolute; left: 0; top: 250px; width: 1920px; text-align: center; font-family: "Bebas Neue", sans-serif; font-size: 400px; line-height: 360px; letter-spacing: 0.01em; }
+    .s9-count .plus { display: inline-block; }
+    .s9-ref { position: absolute; left: 0; top: 640px; width: 1920px; text-align: center; height: 86px; overflow: hidden; }
+    .s9-ref span { display: block; font-family: "Bebas Neue", sans-serif; font-size: 84px; line-height: 86px; letter-spacing: 0.2em; }
+    .s9-types { position: absolute; left: 0; top: 770px; width: 1920px; text-align: center; font-size: 18px; font-weight: 600; letter-spacing: 0.34em; }
+  </style>
+
+  <div id="root" data-composition-id="s09-references" data-width="1920" data-height="1080">
+    <div class="s9-bg clip" id="s9-bg" data-start="0" data-duration="8" data-track-index="0"></div>
+    <div class="s9-world clip" id="s9-world" data-start="0" data-duration="8" data-track-index="1">
+      <div class="s9-mosaic" id="s9-mosaic"></div>
+      <div class="s9-shade" id="s9-shade"></div>
+      <div class="s9-count" id="s9-count"><span id="s9-num">0</span><span class="plus" id="s9-plus">+</span></div>
+      <div class="s9-ref"><span id="s9-ref">RÉFÉRENCES CONSTRUITES</span></div>
+      <div class="s9-types" id="s9-types">RÉSIDENTIEL · MULTIRÉSIDENTIEL · TERTIAIRE · INDUSTRIEL</div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      // Mur de 169 réalisations (13 x 13, tuiles 16:9) ; la tuile centrale est le dernier projet
+      // de la scène précédente, affiché plein cadre au départ (zoom x12)
+      const mosaic = document.getElementById("s9-mosaic");
+      const COLS = 13, ROWS = 13, N = 157;
+      for (let r = 0; r < ROWS; r++) {
+        for (let c = 0; c < COLS; c++) {
+          const tile = document.createElement("div");
+          tile.className = "s9-tile";
+          tile.style.left = (c * 160) + "px";
+          tile.style.top = (r * 90) + "px";
+          const img = document.createElement("img");
+          img.alt = "";
+          if (c === 6 && r === 6) {
+            tile.className = "s9-tile hero";
+            img.src = "assets/projects/dion-valmont-extension.jpg";
+          } else {
+            const k = (r * 37 + c * 53 + r * c * 7) % N;
+            img.src = "assets/mosaic/m" + String(k).padStart(3, "0") + ".jpg";
+          }
+          tile.appendChild(img);
+          mosaic.appendChild(tile);
+        }
+      }
+
+      gsap.set("#s9-mosaic", { scale: 12 });
+      const tl = gsap.timeline({ paused: true });
+
+      // Zoom arrière (interpolation logarithmique pour une vitesse perçue constante)
+      const zoom = { z: Math.log(12) };
+      tl.fromTo(zoom, { z: Math.log(12) }, {
+        z: 0, duration: 3.0, ease: "power2.inOut",
+        onUpdate: function () { gsap.set("#s9-mosaic", { scale: Math.exp(zoom.z) }); }
+      }, 0);
+
+      tl.fromTo("#s9-shade", { opacity: 0 }, { opacity: 0.66, duration: 0.9, ease: "power2.inOut" }, 2.5);
+      tl.fromTo("#s9-count", { opacity: 0, scale: 0.86 }, { opacity: 1, scale: 1, duration: 0.9, ease: "expo.out" }, 2.85);
+      const cnt = { v: 0 };
+      tl.fromTo(cnt, { v: 0 }, {
+        v: 500, duration: 1.7, ease: "power2.out", immediateRender: false,
+        onUpdate: function () { document.getElementById("s9-num").textContent = Math.round(cnt.v); }
+      }, 2.85);
+      tl.fromTo("#s9-plus", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 4.45);
+      tl.fromTo("#s9-ref", { yPercent: 135 }, { yPercent: 0, duration: 0.8, ease: "expo.out" }, 3.7);
+      tl.fromTo("#s9-types", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 4.7);
+
+      tl.to("#s9-world", { scale: 1.16, filter: "blur(18px)", duration: 0.25, ease: "power3.in" }, 7.75);
+      tl.to("#s9-world", { opacity: 0.15, duration: 0.25, ease: "none" }, 7.75);
+
+      window.__timelines["s09-references"] = tl;
+    })();
+  </script>
+</template>

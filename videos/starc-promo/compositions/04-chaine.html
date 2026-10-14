@@ -1,0 +1,172 @@
+<template>
+  <style>
+    @font-face { font-family: "Bebas Neue"; src: url("assets/fonts/bebas_neue_latin_400_normal.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat_latin_500_normal.woff2") format("woff2"); font-weight: 500; }
+    @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat_latin_600_normal.woff2") format("woff2"); font-weight: 600; }
+
+    #root { position: absolute; inset: 0; overflow: hidden; color: #ffffff; font-family: "Montserrat", sans-serif; }
+    .s4-bg { position: absolute; inset: 0; background: #000000; }
+    .s4-world { position: absolute; inset: 0; transform-origin: 50% 50%; }
+
+    .s4-head { position: absolute; left: 120px; top: 96px; display: flex; align-items: center; gap: 22px; }
+    .s4-num { font-family: "Bebas Neue", sans-serif; font-size: 34px; letter-spacing: 0.06em; }
+    .s4-dash { width: 64px; height: 2px; background: #ffffff; transform-origin: 0 50%; }
+    .s4-label { font-size: 17px; font-weight: 600; letter-spacing: 0.38em; }
+    .s4-title { position: absolute; left: 120px; top: 140px; height: 104px; overflow: hidden; white-space: nowrap; }
+    .s4-title span { display: inline-block; font-family: "Bebas Neue", sans-serif; font-size: 102px; line-height: 104px; margin-right: 22px; }
+
+    .s4-svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: visible; }
+    .s4-svg .ln { fill: none; stroke: #ffffff; stroke-width: 2; stroke-dasharray: 1; stroke-dashoffset: 1; }
+    .s4-track { position: absolute; left: 200px; top: 639px; width: 1520px; height: 2.5px; background: #ffffff; transform-origin: 0 50%; }
+    .s4-rollers { position: absolute; left: 200px; top: 646px; width: 1520px; height: 14px; overflow: hidden; }
+    .s4-rollers svg { position: absolute; left: 0; top: 0; width: 1520px; height: 14px; }
+    .s4-rollers line { stroke: #ffffff; stroke-width: 7; stroke-dasharray: 2 22; }
+
+    .s4-node { position: absolute; top: 626px; width: 28px; height: 28px; margin-left: -14px; }
+    .s4-node .dot { position: absolute; inset: 0; border-radius: 50%; border: 2.5px solid #ffffff; background: #000000; }
+    .s4-node .ring { position: absolute; inset: 0; border-radius: 50%; border: 2px solid #ffffff; opacity: 0; }
+    .s4-st { position: absolute; top: 676px; width: 300px; margin-left: -150px; text-align: center; }
+    .s4-st-n { font-family: "Bebas Neue", sans-serif; font-size: 26px; letter-spacing: 0.1em; }
+    .s4-st-t { font-family: "Bebas Neue", sans-serif; font-size: 46px; line-height: 1; letter-spacing: 0.02em; }
+
+    .s4-token { position: absolute; left: 140px; top: 476px; width: 120px; height: 120px; }
+    .s4-token svg { width: 120px; height: 120px; overflow: visible; }
+
+    .s4-who { position: absolute; top: 262px; display: flex; align-items: center; gap: 18px; }
+    .s4-who svg { width: 52px; height: 60px; overflow: visible; }
+    .s4-who svg * { fill: none; stroke: #ffffff; stroke-width: 2.4; stroke-linecap: round; }
+    .s4-who-name { font-family: "Bebas Neue", sans-serif; font-size: 56px; line-height: 1; white-space: nowrap; }
+    .s4-who-sub { font-size: 16px; font-weight: 600; letter-spacing: 0.26em; margin-top: 6px; white-space: nowrap; }
+    .s4-relay { position: absolute; left: 610px; top: 398px; width: 330px; text-align: center; font-size: 14px; font-weight: 600; letter-spacing: 0.4em; }
+
+    .s4-final { position: absolute; left: 0; top: 806px; width: 1920px; text-align: center; height: 100px; overflow: hidden; white-space: nowrap; }
+    .s4-final span { display: inline-block; font-family: "Bebas Neue", sans-serif; font-size: 96px; line-height: 100px; margin: 0 12px; }
+    .s4-final-sub { position: absolute; left: 0; top: 926px; width: 1920px; text-align: center; font-size: 22px; font-weight: 500; letter-spacing: 0.08em; }
+  </style>
+
+  <div id="root" data-composition-id="s04-chaine" data-width="1920" data-height="1080">
+    <div class="s4-bg clip" id="s4-bg" data-start="0" data-duration="14" data-track-index="0"></div>
+    <div class="s4-world clip" id="s4-world" data-start="0" data-duration="14" data-track-index="1">
+      <div class="s4-texts" id="s4-texts">
+        <div class="s4-head">
+          <span class="s4-num" id="s4-num">02</span>
+          <span class="s4-dash" id="s4-dash"></span>
+          <span class="s4-label" id="s4-label">EFFICACITÉ</span>
+        </div>
+        <div class="s4-title" id="s4-title"><span>ORGANISÉS</span><span>COMME</span><span>UNE</span><span>CHAÎNE</span><span>DE</span><span>MONTAGE</span></div>
+
+        <svg class="s4-svg" viewBox="0 0 1920 1080">
+          <path class="ln" id="s4-br-a" pathLength="1" d="M200 396 V378 H580 V396" />
+          <path class="ln" id="s4-relay-line" pathLength="1" d="M612 387 H930 M916 378 L932 387 L916 396" />
+          <path class="ln" id="s4-br-b" pathLength="1" d="M960 396 V378 H1720 V396" />
+        </svg>
+
+        <div class="s4-who" id="s4-who-a" style="left: 200px;">
+          <svg viewBox="0 0 56 64"><ellipse id="s4-halo" cx="28" cy="7" rx="13" ry="3.6" /><circle cx="28" cy="24" r="10" /><path d="M8 62 C8 47 17 40 28 40 C39 40 48 47 48 62" /></svg>
+          <div>
+            <div class="s4-who-name">L'ARCHITECTE «&nbsp;GENTIL&nbsp;»</div>
+            <div class="s4-who-sub">CONCEPTION &amp; PERMIS</div>
+          </div>
+        </div>
+        <div class="s4-who" id="s4-who-b" style="left: 960px;">
+          <svg viewBox="0 0 56 64"><path id="s4-horns" d="M21 16 C17 12 17 7 19 2 C21 7 23 10 26 14 M35 16 C39 12 39 7 37 2 C35 7 33 10 30 14" /><circle cx="28" cy="24" r="10" /><path d="M8 62 C8 47 17 40 28 40 C39 40 48 47 48 62" /></svg>
+          <div>
+            <div class="s4-who-name">L'ARCHITECTE «&nbsp;MÉCHANT&nbsp;»</div>
+            <div class="s4-who-sub">EXÉCUTION, APPEL D'OFFRES &amp; CHANTIER</div>
+          </div>
+        </div>
+        <div class="s4-relay" id="s4-relay">RELAIS</div>
+
+        <div class="s4-final" id="s4-final"><span>CHACUN</span><span>SON</span><span>RÔLE</span><span>·</span><span>ZÉRO</span><span>TEMPS</span><span>MORT</span></div>
+        <div class="s4-final-sub" id="s4-final-sub">Chaque phase confiée à un spécialiste qui la maîtrise parfaitement.</div>
+      </div>
+
+      <div class="s4-track" id="s4-track"></div>
+      <div class="s4-rollers" id="s4-rollers-wrap"><svg viewBox="0 0 1520 14"><line id="s4-rollers" x1="0" y1="7" x2="1520" y2="7" /></svg></div>
+
+      <div class="s4-node" style="left: 200px;"><div class="ring"></div><div class="dot"></div></div>
+      <div class="s4-node" style="left: 580px;"><div class="ring"></div><div class="dot"></div></div>
+      <div class="s4-node" style="left: 960px;"><div class="ring"></div><div class="dot"></div></div>
+      <div class="s4-node" style="left: 1340px;"><div class="ring"></div><div class="dot"></div></div>
+      <div class="s4-node" style="left: 1720px;"><div class="ring"></div><div class="dot"></div></div>
+
+      <div class="s4-st" style="left: 200px;"><div class="s4-st-n">01</div><div class="s4-st-t">ESQUISSE</div></div>
+      <div class="s4-st" style="left: 580px;"><div class="s4-st-n">02</div><div class="s4-st-t">PERMIS</div></div>
+      <div class="s4-st" style="left: 960px;"><div class="s4-st-n">03</div><div class="s4-st-t">EXÉCUTION</div></div>
+      <div class="s4-st" style="left: 1340px;"><div class="s4-st-n">04</div><div class="s4-st-t">APPEL D'OFFRES</div></div>
+      <div class="s4-st" style="left: 1720px;"><div class="s4-st-n">05</div><div class="s4-st-t">CHANTIER</div></div>
+
+      <div class="s4-token" id="s4-token">
+        <svg viewBox="0 0 120 120">
+          <defs><clipPath id="s4-house-clip"><path d="M14 56 L60 16 L106 56 V110 H14 Z" /></clipPath></defs>
+          <g clip-path="url(#s4-house-clip)"><rect id="s4-fill" x="0" y="0" width="120" height="110" fill="#ffffff" /></g>
+          <path d="M14 56 L60 16 L106 56 V110 H14 Z" fill="none" stroke="#ffffff" stroke-width="3" stroke-linejoin="miter" />
+          <path id="s4-openings" d="M30 110 V82 H48 V110 M68 70 H92 V90 H68 Z M80 70 V90" fill="none" stroke="#000000" stroke-width="3" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;" />
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      const stations = [200, 580, 960, 1340, 1720];
+
+      tl.fromTo("#s4-world", { scale: 0.8, filter: "blur(14px)", opacity: 0.15 }, { scale: 1, filter: "blur(0px)", opacity: 1, duration: 0.55, ease: "expo.out" }, 0);
+
+      tl.fromTo("#s4-num", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.15);
+      tl.fromTo("#s4-dash", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.inOut" }, 0.25);
+      tl.fromTo("#s4-label", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 0.4);
+      tl.fromTo("#s4-title span", { yPercent: 135 }, { yPercent: 0, duration: 0.75, ease: "expo.out", stagger: 0.08 }, 0.45);
+
+      // La chaîne se met en place
+      tl.fromTo("#s4-track", { scaleX: 0 }, { scaleX: 1, duration: 1.1, ease: "power3.inOut" }, 1.0);
+      tl.fromTo("#s4-rollers-wrap", { opacity: 0 }, { opacity: 1, duration: 0.6 }, 1.6);
+      tl.fromTo("#s4-rollers", { strokeDashoffset: 0 }, { strokeDashoffset: -480, duration: 12.4, ease: "none" }, 1.6);
+      tl.fromTo("#s4-world .s4-node", { scale: 0 }, { scale: 1, duration: 0.5, ease: "power3.out", stagger: 0.16 }, 1.2);
+      tl.fromTo("#s4-world .s4-st", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out", stagger: 0.16 }, 1.35);
+
+      // Le projet avance de poste en poste et se construit
+      const nodes = gsap.utils.toArray("#s4-world .s4-node");
+      function arrive(i, t) {
+        tl.fromTo(nodes[i].querySelector(".dot"), { backgroundColor: "#000000" }, { backgroundColor: "#ffffff", duration: 0.3, ease: "power2.out" }, t);
+        tl.fromTo(nodes[i].querySelector(".ring"), { scale: 1, opacity: 0.9 }, { scale: 2.6, opacity: 0, duration: 0.8, ease: "power3.out" }, t);
+      }
+      tl.fromTo("#s4-token", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.6, ease: "power3.out" }, 2.0);
+      tl.fromTo("#s4-fill", { scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 0.2, duration: 0.6, ease: "power3.out" }, 2.1);
+      arrive(0, 2.1);
+
+      const moves = [
+        { to: 1, t: 3.4, fill: 0.4 },
+        { to: 2, t: 5.4, fill: 0.6 },
+        { to: 3, t: 7.0, fill: 0.8 },
+        { to: 4, t: 8.6, fill: 1.0 }
+      ];
+      moves.forEach(function (m, k) {
+        tl.fromTo("#s4-token", { x: (stations[m.to - 1] - 200) }, { x: (stations[m.to] - 200), duration: 0.75, ease: "power3.inOut", immediateRender: false }, m.t);
+        tl.fromTo("#s4-fill", { scaleY: moves[k - 1] ? moves[k - 1].fill : 0.2 }, { scaleY: m.fill, duration: 0.6, ease: "power3.out", immediateRender: false }, m.t + 0.6);
+        arrive(m.to, m.t + 0.6);
+      });
+      tl.fromTo("#s4-openings", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.7, ease: "power2.out" }, 9.4);
+
+      // Le « gentil » et le « méchant »
+      tl.fromTo("#s4-br-a", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.8, ease: "power3.inOut" }, 2.3);
+      tl.fromTo("#s4-who-a", { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 2.5);
+      tl.fromTo("#s4-halo", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 3.0);
+      tl.fromTo("#s4-relay-line", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.6, ease: "power3.inOut" }, 4.6);
+      tl.fromTo("#s4-relay", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 4.85);
+      tl.fromTo("#s4-br-b", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.9, ease: "power3.inOut" }, 5.0);
+      tl.fromTo("#s4-who-b", { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 5.2);
+      tl.fromTo("#s4-horns", { opacity: 0, y: 6 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 5.7);
+
+      // Conclusion
+      tl.fromTo("#s4-final span", { yPercent: 135 }, { yPercent: 0, duration: 0.7, ease: "expo.out", stagger: 0.1 }, 9.9);
+      tl.fromTo("#s4-final-sub", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 10.9);
+
+      // Seule la chaîne reste : elle se démultiplie dans la scène suivante
+      tl.to("#s4-texts", { opacity: 0, duration: 0.45, ease: "power2.in" }, 13.45);
+
+      window.__timelines["s04-chaine"] = tl;
+    })();
+  </script>
+</template>

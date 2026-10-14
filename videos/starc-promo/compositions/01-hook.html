@@ -1,0 +1,142 @@
+<template>
+  <style>
+    @font-face { font-family: "Bebas Neue"; src: url("assets/fonts/bebas_neue_latin_400_normal.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat_latin_500_normal.woff2") format("woff2"); font-weight: 500; }
+    @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat_latin_600_normal.woff2") format("woff2"); font-weight: 600; }
+
+    #root { position: absolute; inset: 0; overflow: hidden; color: #ffffff; font-family: "Montserrat", sans-serif; }
+    .s1-bg { position: absolute; inset: 0; background: #000000; }
+    .s1-world { position: absolute; inset: 0; transform-origin: 50% 50%; }
+
+    .s1-ground { position: absolute; left: 0; top: 689px; width: 1920px; height: 2px; background: #ffffff; transform-origin: 50% 50%; }
+    .s1-drawing { position: absolute; left: 820px; top: 170px; width: 1000px; height: 560px; overflow: visible; }
+    .s1-drawing path { fill: none; stroke: #ffffff; stroke-width: 2.4; stroke-linecap: butt; stroke-linejoin: miter; stroke-dasharray: 1; stroke-dashoffset: 1; }
+    .s1-drawing .thin { stroke-width: 1.3; }
+    .s1-drawing text { fill: #ffffff; font-family: "Montserrat", sans-serif; font-weight: 500; font-size: 17px; letter-spacing: 0.08em; }
+    .s1-drawing .s1-caption { font-size: 14px; letter-spacing: 0.3em; font-weight: 600; }
+
+    .s1-photo-box { position: absolute; left: 820px; top: 170px; width: 1000px; height: 560px; overflow: hidden; }
+    .s1-photo-box img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+    .s1-scan { position: absolute; left: 820px; top: 729px; width: 1000px; height: 3px; background: #ffffff; }
+
+    .s1-text { position: absolute; left: 120px; top: 300px; width: 660px; }
+    .s1-kicker { font-size: 19px; font-weight: 600; letter-spacing: 0.38em; text-transform: uppercase; }
+    .s1-titles { position: relative; margin-top: 34px; height: 290px; }
+    .s1-title { position: absolute; left: 0; top: 0; width: 680px; font-family: "Bebas Neue", sans-serif; font-size: 146px; line-height: 136px; letter-spacing: 0.01em; white-space: nowrap; }
+    .s1-line { display: block; overflow: hidden; height: 136px; }
+    .s1-line span { display: block; }
+
+    .s1-full { position: absolute; inset: 0; overflow: hidden; }
+    .s1-full img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+    .s1-shade { position: absolute; inset: 0; background: #000000; }
+    .s1-word { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; display: flex; align-items: center; justify-content: center; font-family: "Bebas Neue", sans-serif; font-size: 250px; letter-spacing: 0.04em; }
+  </style>
+
+  <div id="root" data-composition-id="s01-hook" data-width="1920" data-height="1080">
+    <div class="s1-bg clip" id="s1-bg" data-start="0" data-duration="8" data-track-index="0"></div>
+
+    <div class="s1-world clip" id="s1-world" data-start="0" data-duration="8" data-track-index="1">
+      <div class="s1-ground" id="s1-ground"></div>
+
+      <svg class="s1-drawing" id="s1-drawing" viewBox="0 0 1000 560">
+        <path class="s1-d" pathLength="1" d="M380 520 V250 L550 90 L720 250 V520" />
+        <path class="s1-d" pathLength="1" d="M362 266 L550 72 L738 266" />
+        <path class="s1-d" pathLength="1" d="M120 520 V330 H380" />
+        <path class="s1-d" pathLength="1" d="M104 330 H380 M104 318 H380 M104 318 V330" />
+        <path class="s1-d" pathLength="1" d="M720 520 V380 H900 V520" />
+        <path class="s1-d" pathLength="1" d="M720 368 H914 V380" />
+        <path class="s1-d" pathLength="1" d="M420 520 V300 H520 V520 M470 300 V520 M420 410 H520" />
+        <path class="s1-d" pathLength="1" d="M590 410 V300 H680 V410 Z M635 300 V410" />
+        <path class="s1-d" pathLength="1" d="M520 230 L550 200 L580 230 Z" />
+        <path class="s1-d" pathLength="1" d="M160 470 V380 H240 V470 Z M200 380 V470" />
+        <path class="s1-d" pathLength="1" d="M280 520 V400 H332 V520 M320 462 V470" />
+        <path class="s1-d" pathLength="1" d="M745 520 V420 H875 V520 M745 445 H875 M745 470 H875 M745 495 H875" />
+        <path class="s1-d thin" pathLength="1" d="M600 520 V440 M620 520 V440 M640 520 V440 M660 520 V440 M680 520 V440 M700 520 V440" />
+        <path class="s1-d thin" pathLength="1" d="M120 532 V560 M900 532 V560 M120 548 H900 M112 556 L128 540 M892 556 L908 540" />
+        <path class="s1-d thin" pathLength="1" d="M932 90 H968 M932 520 H968 M956 90 V520 M948 98 L964 82 M948 528 L964 512" />
+        <text class="s1-dim" x="510" y="541" text-anchor="middle">15,20</text>
+        <text class="s1-dim" x="944" y="312" text-anchor="middle" transform="rotate(-90 944 312)">8,45</text>
+        <text class="s1-dim s1-caption" x="0" y="600">FAÇADE AVANT · ÉCH. 1/50</text>
+      </svg>
+
+      <div class="s1-photo-box" id="s1-photo-box">
+        <img src="assets/projects/walhain-extension.jpg" alt="" />
+      </div>
+      <div class="s1-scan" id="s1-scan"></div>
+
+      <div class="s1-text" id="s1-text">
+        <div class="s1-kicker" id="s1-kicker">STARC · Studio d'architecture</div>
+        <div class="s1-titles">
+          <div class="s1-title" id="s1-title-a">
+            <span class="s1-line"><span>DU PREMIER</span></span>
+            <span class="s1-line"><span>TRAIT</span></span>
+          </div>
+          <div class="s1-title" id="s1-title-b">
+            <span class="s1-line"><span>À LA DERNIÈRE</span></span>
+            <span class="s1-line"><span>PIERRE</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="s1-full" id="s1-full-2">
+        <img id="s1-img-2" src="assets/projects/gembloux-garage.jpg" alt="" />
+      </div>
+      <div class="s1-full" id="s1-full-3">
+        <img id="s1-img-3" src="assets/projects/court-st-etienne-kine.jpg" alt="" />
+      </div>
+      <div class="s1-shade" id="s1-shade"></div>
+      <div class="s1-word" id="s1-word-1">CONCEVOIR</div>
+      <div class="s1-word" id="s1-word-2">CALCULER</div>
+      <div class="s1-word" id="s1-word-3">CONSTRUIRE</div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+
+      // Plan de façade qui se dessine
+      tl.fromTo("#s1-ground", { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "power3.inOut" }, 0);
+      tl.fromTo(".s1-d", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.9, ease: "power2.inOut", stagger: 0.13 }, 0.45);
+      tl.fromTo(".s1-dim", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out", stagger: 0.12 }, 2.2);
+
+      tl.fromTo("#s1-kicker", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.5);
+      tl.fromTo("#s1-title-a .s1-line span", { yPercent: 135 }, { yPercent: 0, duration: 0.8, ease: "expo.out", stagger: 0.12 }, 0.9);
+      tl.set("#s1-title-b .s1-line span", { yPercent: 135 }, 0);
+
+      // La réalisation se construit de bas en haut
+      tl.fromTo("#s1-photo-box", { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1.3, ease: "power3.inOut" }, 3.0);
+      tl.fromTo("#s1-scan", { opacity: 0 }, { opacity: 1, duration: 0.05 }, 2.95);
+      tl.fromTo("#s1-scan", { y: 0 }, { y: -560, duration: 1.3, ease: "power3.inOut", immediateRender: false }, 3.0);
+      tl.fromTo("#s1-scan", { opacity: 1 }, { opacity: 0, duration: 0.2, immediateRender: false }, 4.3);
+      tl.to("#s1-title-a .s1-line span", { yPercent: -135, duration: 0.45, ease: "power3.in", stagger: 0.06 }, 3.15);
+      tl.to("#s1-title-b .s1-line span", { yPercent: 0, duration: 0.8, ease: "expo.out", stagger: 0.1 }, 3.6);
+
+      // Zoom vers le plein cadre
+      tl.to("#s1-photo-box", { x: -360, y: 90, scale: 1.93, duration: 0.65, ease: "power3.inOut" }, 4.35);
+      tl.to("#s1-text", { x: -260, opacity: 0, duration: 0.45, ease: "power3.in" }, 4.3);
+      tl.to("#s1-ground", { opacity: 0, duration: 0.3 }, 4.4);
+
+      // Trois mots, trois images
+      tl.fromTo("#s1-shade", { opacity: 0 }, { opacity: 0.42, duration: 0.4, ease: "power2.out" }, 4.85);
+      tl.fromTo("#s1-word-1", { opacity: 0, scale: 1.18, filter: "blur(10px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.5, ease: "expo.out" }, 5.0);
+      tl.fromTo("#s1-photo-box img", { scale: 1 }, { scale: 1.06, duration: 1.0, ease: "none" }, 5.0);
+
+      tl.set("#s1-word-1", { opacity: 0 }, 6.0);
+      tl.fromTo("#s1-full-2", { opacity: 0 }, { opacity: 1, duration: 0.01 }, 6.0);
+      tl.fromTo("#s1-img-2", { scale: 1.12 }, { scale: 1.0, duration: 1.0, ease: "power2.out" }, 6.0);
+      tl.fromTo("#s1-word-2", { opacity: 0, scale: 1.18, filter: "blur(10px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.5, ease: "expo.out" }, 6.0);
+
+      tl.set("#s1-word-2", { opacity: 0 }, 7.0);
+      tl.fromTo("#s1-full-3", { opacity: 0 }, { opacity: 1, duration: 0.01 }, 7.0);
+      tl.fromTo("#s1-img-3", { scale: 1.12 }, { scale: 1.02, duration: 1.0, ease: "power2.out" }, 7.0);
+      tl.fromTo("#s1-word-3", { opacity: 0, scale: 1.18, filter: "blur(10px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.5, ease: "expo.out" }, 7.0);
+
+      // Sortie zoom-through vers le logo
+      tl.to("#s1-world", { scale: 1.16, filter: "blur(18px)", duration: 0.25, ease: "power3.in" }, 7.75);
+      tl.to("#s1-world", { opacity: 0.15, duration: 0.25, ease: "none" }, 7.75);
+
+      window.__timelines["s01-hook"] = tl;
+    })();
+  </script>
+</template>

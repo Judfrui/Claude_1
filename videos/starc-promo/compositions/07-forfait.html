@@ -1,0 +1,130 @@
+<template>
+  <style>
+    @font-face { font-family: "Bebas Neue"; src: url("assets/fonts/bebas_neue_latin_400_normal.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat_latin_500_normal.woff2") format("woff2"); font-weight: 500; }
+    @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat_latin_600_normal.woff2") format("woff2"); font-weight: 600; }
+
+    #root { position: absolute; inset: 0; overflow: hidden; color: #ffffff; font-family: "Montserrat", sans-serif; }
+    .s7-bg { position: absolute; inset: 0; background: #000000; }
+    .s7-world { position: absolute; inset: 0; transform-origin: 50% 50%; }
+
+    .s7-head { position: absolute; left: 120px; top: 96px; display: flex; align-items: center; gap: 22px; }
+    .s7-num { font-family: "Bebas Neue", sans-serif; font-size: 34px; letter-spacing: 0.06em; }
+    .s7-dash { width: 64px; height: 2px; background: #ffffff; transform-origin: 0 50%; }
+    .s7-label { font-size: 17px; font-weight: 600; letter-spacing: 0.38em; }
+    .s7-title { position: absolute; left: 120px; top: 140px; height: 150px; overflow: hidden; white-space: nowrap; }
+    .s7-title span { display: inline-block; font-family: "Bebas Neue", sans-serif; font-size: 148px; line-height: 150px; margin-right: 26px; }
+    .s7-sub { position: absolute; left: 124px; top: 306px; font-size: 26px; font-weight: 500; letter-spacing: 0.06em; }
+
+    .s7-bar { position: absolute; left: 120px; top: 520px; width: 1680px; height: 84px; }
+    .s7-seg { position: absolute; top: 0; height: 84px; }
+    .s7-seg .fill { position: absolute; inset: 0; background: #ffffff; transform-origin: 0 50%; }
+    .s7-seg .outline { position: absolute; inset: 0; border: 2px solid #ffffff; }
+    .s7-seg .name { position: absolute; left: 0; top: -52px; white-space: nowrap; }
+    .s7-seg .name b { font-family: "Bebas Neue", sans-serif; font-weight: 400; font-size: 22px; letter-spacing: 0.1em; margin-right: 8px; }
+    .s7-seg .name span { font-family: "Bebas Neue", sans-serif; font-size: 34px; }
+    .s7-seg .pct { position: absolute; left: 0; top: 104px; font-family: "Bebas Neue", sans-serif; font-size: 66px; line-height: 1; white-space: nowrap; }
+
+    .s7-total { position: absolute; left: 120px; top: 760px; width: 1680px; display: flex; justify-content: space-between; align-items: baseline; }
+    .s7-total-a { font-family: "Bebas Neue", sans-serif; font-size: 96px; line-height: 1; }
+    .s7-total-b { font-size: 22px; font-weight: 600; letter-spacing: 0.3em; }
+
+    .s7-white { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; background: #ffffff; clip-path: inset(48.15% 6.25% 44.07% 68%); }
+    .s7-ink { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; color: #000000; }
+    .s7-ink-a { position: absolute; left: 0; top: 300px; width: 1920px; text-align: center; height: 170px; overflow: hidden; }
+    .s7-ink-a span { display: block; font-family: "Bebas Neue", sans-serif; font-size: 168px; line-height: 170px; letter-spacing: 0.02em; }
+    .s7-ink-b { position: absolute; left: 0; top: 470px; width: 1920px; text-align: center; height: 290px; overflow: hidden; }
+    .s7-ink-b span { display: block; font-family: "Bebas Neue", sans-serif; font-size: 300px; line-height: 290px; letter-spacing: 0.01em; }
+    .s7-ink-rule { position: absolute; left: 560px; top: 790px; width: 800px; height: 3px; background: #000000; transform-origin: 50% 50%; }
+  </style>
+
+  <div id="root" data-composition-id="s07-forfait" data-width="1920" data-height="1080">
+    <div class="s7-bg clip" id="s7-bg" data-start="0" data-duration="10" data-track-index="0"></div>
+    <div class="s7-world clip" id="s7-world" data-start="0" data-duration="10" data-track-index="1">
+      <div class="s7-head">
+        <span class="s7-num" id="s7-num">05</span>
+        <span class="s7-dash" id="s7-dash"></span>
+        <span class="s7-label" id="s7-label">TRANSPARENCE</span>
+      </div>
+      <div class="s7-title" id="s7-title"><span>HONORAIRES</span><span>AU</span><span>FORFAIT</span></div>
+      <div class="s7-sub" id="s7-sub">Fixés dès la signature. Invariables, phase par phase.</div>
+
+      <div class="s7-bar" id="s7-bar"></div>
+
+      <div class="s7-total" id="s7-total">
+        <div class="s7-total-a">AUCUNE SURPRISE</div>
+        <div class="s7-total-b">= 100 % DU FORFAIT</div>
+      </div>
+
+      <div class="s7-white" id="s7-white"></div>
+      <div class="s7-ink" id="s7-ink">
+        <div class="s7-ink-a"><span id="s7-ink-a">TOUT EST POSÉ</span></div>
+        <div class="s7-ink-b"><span id="s7-ink-b">NOIR SUR BLANC</span></div>
+        <div class="s7-ink-rule" id="s7-ink-rule"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const phases = [
+        { n: "01", t: "ESQUISSE", p: 10 },
+        { n: "02", t: "AVANT-PROJET", p: 20 },
+        { n: "03", t: "PERMIS", p: 20 },
+        { n: "04", t: "EXÉCUTION", p: 20 },
+        { n: "05", t: "CHANTIER", p: 30 }
+      ];
+      const bar = document.getElementById("s7-bar");
+      const GAP = 8, TOTAL = 1680 - GAP * 4;
+      let x = 0;
+      phases.forEach(function (ph, i) {
+        const w = TOTAL * ph.p / 100;
+        const seg = document.createElement("div");
+        seg.className = "s7-seg";
+        seg.id = "s7-seg-" + i;
+        seg.style.left = x + "px";
+        seg.style.width = w + "px";
+        seg.innerHTML = '<div class="outline"></div><div class="fill"></div>' +
+          '<div class="name"><b>' + ph.n + '</b><span>' + ph.t + '</span></div>' +
+          '<div class="pct"><span class="s7-pct-v" id="s7-pct-' + i + '">0</span> %</div>';
+        bar.appendChild(seg);
+        x += w + GAP;
+      });
+
+      const tl = gsap.timeline({ paused: true });
+
+      tl.fromTo("#s7-world", { scale: 0.8, filter: "blur(14px)", opacity: 0.15 }, { scale: 1, filter: "blur(0px)", opacity: 1, duration: 0.55, ease: "expo.out" }, 0);
+      tl.fromTo("#s7-num", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.15);
+      tl.fromTo("#s7-dash", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.inOut" }, 0.25);
+      tl.fromTo("#s7-label", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 0.4);
+      tl.fromTo("#s7-title span", { yPercent: 135 }, { yPercent: 0, duration: 0.75, ease: "expo.out", stagger: 0.1 }, 0.45);
+      tl.fromTo("#s7-sub", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 1.0);
+
+      // Les cinq phases se remplissent une à une
+      phases.forEach(function (ph, i) {
+        const t = 1.5 + i * 0.62;
+        const seg = "#s7-seg-" + i;
+        tl.fromTo(seg + " .outline", { scaleX: 0, transformOrigin: "0 50%" }, { scaleX: 1, duration: 0.45, ease: "power3.out" }, t - 0.2);
+        tl.fromTo(seg + " .name", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, t - 0.1);
+        tl.fromTo(seg + " .fill", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.inOut" }, t);
+        tl.fromTo(seg + " .pct", { opacity: 0 }, { opacity: 1, duration: 0.3 }, t);
+        const c = { v: 0 };
+        tl.fromTo(c, { v: 0 }, {
+          v: ph.p, duration: 0.6, ease: "power2.out",
+          onUpdate: function () { document.getElementById("s7-pct-" + i).textContent = Math.round(c.v); }
+        }, t);
+      });
+
+      tl.fromTo("#s7-total", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 4.75);
+
+      // Bascule : tout devient blanc, noir sur blanc
+      tl.fromTo("#s7-white", { opacity: 0 }, { opacity: 1, duration: 0.01 }, 6.94);
+      tl.fromTo("#s7-white", { clipPath: "inset(48.15% 6.25% 44.07% 68%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.85, ease: "expo.inOut", immediateRender: false }, 6.95);
+      tl.fromTo("#s7-ink-a", { yPercent: 135 }, { yPercent: 0, duration: 0.7, ease: "expo.out" }, 7.55);
+      tl.fromTo("#s7-ink-b", { yPercent: 135 }, { yPercent: 0, duration: 0.8, ease: "expo.out" }, 8.0);
+      tl.fromTo("#s7-ink-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.8, ease: "power3.inOut" }, 8.35);
+
+      window.__timelines["s07-forfait"] = tl;
+    })();
+  </script>
+</template>

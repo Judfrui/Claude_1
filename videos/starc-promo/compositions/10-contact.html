@@ -1,0 +1,55 @@
+<template>
+  <style>
+    @font-face { font-family: "Bebas Neue"; src: url("assets/fonts/bebas_neue_latin_400_normal.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat_latin_400_normal.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat_latin_500_normal.woff2") format("woff2"); font-weight: 500; }
+    @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat_latin_600_normal.woff2") format("woff2"); font-weight: 600; }
+
+    #root { position: absolute; inset: 0; overflow: hidden; color: #ffffff; font-family: "Montserrat", sans-serif; }
+    .s10-bg { position: absolute; inset: 0; background: #000000; }
+    .s10-world { position: absolute; inset: 0; transform-origin: 50% 50%; }
+    .s10-logo-wrap { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform: translateY(-240px) scale(0.8); transform-origin: 50% 50%; }
+    .s10-anim { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; object-fit: cover; display: block; }
+
+    .s10-cta { position: absolute; left: 0; top: 486px; width: 1920px; text-align: center; height: 132px; overflow: hidden; }
+    .s10-cta span { display: block; font-family: "Bebas Neue", sans-serif; font-size: 136px; line-height: 132px; letter-spacing: 0.02em; }
+    .s10-url { position: absolute; left: 0; top: 664px; width: 1920px; text-align: center; font-size: 46px; font-weight: 600; letter-spacing: 0.1em; }
+    .s10-sep { position: absolute; left: 900px; top: 752px; width: 120px; height: 2px; background: #ffffff; transform-origin: 50% 50%; }
+    .s10-info { position: absolute; left: 0; top: 786px; width: 1920px; text-align: center; font-size: 25px; font-weight: 500; letter-spacing: 0.12em; }
+    .s10-addr { position: absolute; left: 0; top: 836px; width: 1920px; text-align: center; font-size: 21px; font-weight: 400; letter-spacing: 0.12em; }
+    .s10-black { position: absolute; inset: 0; background: #000000; }
+  </style>
+
+  <div id="root" data-composition-id="s10-contact" data-width="1920" data-height="1080">
+    <div class="s10-bg clip" id="s10-bg" data-start="0" data-duration="8" data-track-index="0"></div>
+    <!-- Animation officielle du logo STARC, en version négative, réduite et placée en haut de l'écran -->
+    <div class="s10-logo-wrap" id="s10-logo-wrap">
+      <video class="s10-anim clip" id="s10-anim" src="assets/logos/starc-logo-animation-negatif.mp4" data-start="0" data-duration="8" data-track-index="1" muted playsinline></video>
+    </div>
+    <div class="s10-world clip" id="s10-world" data-start="0" data-duration="8" data-track-index="2">
+      <div class="s10-cta"><span id="s10-cta">UN PROJET&nbsp;? PARLONS-EN</span></div>
+      <div class="s10-url" id="s10-url">www.starc.be</div>
+      <div class="s10-sep" id="s10-sep"></div>
+      <div class="s10-info" id="s10-info">info@starc.be · +32 81 98 08 40</div>
+      <div class="s10-addr" id="s10-addr">Rue du Village 85 · 5030 Gembloux</div>
+      <div class="s10-black" id="s10-black"></div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+
+      // Le logo se construit (animation officielle, 0 à 3,7 s), puis l'appel à l'action
+      tl.fromTo("#s10-cta", { yPercent: 135 }, { yPercent: 0, duration: 0.85, ease: "expo.out" }, 3.8);
+      tl.fromTo("#s10-url", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 4.45);
+      tl.fromTo("#s10-sep", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.inOut" }, 4.8);
+      tl.fromTo("#s10-info", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 5.0);
+      tl.fromTo("#s10-addr", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 5.2);
+
+      tl.fromTo("#s10-black", { opacity: 0 }, { opacity: 1, duration: 0.9, ease: "power2.in" }, 7.1);
+
+      window.__timelines["s10-contact"] = tl;
+    })();
+  </script>
+</template>
