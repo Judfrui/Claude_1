@@ -39,7 +39,7 @@ honoraires au forfait, approche sur mesure, et 500+ références construites.
 | 07 | compositions/07-forfait.html | 54 | 10 | HONORAIRES AU FORFAIT : barre en 5 phases (10/20/20/20/30 %), puis l'écran bascule en blanc : TOUT EST POSÉ NOIR SUR BLANC |
 | 08 | compositions/08-sur-mesure.html | 64 | 10 | Fond blanc. VOS BESOINS, VOS ENVIES, VOS CONTRAINTES. Les photos passent du noir et blanc à la couleur. = UN PROJET UNIQUE |
 | 09 | compositions/09-references.html | 74 | 8 | Zoom arrière sur un mur de 160 réalisations, compteur 500+ RÉFÉRENCES CONSTRUITES. |
-| 10 | compositions/10-contact.html | 82 | 8 | Animation officielle du logo, UN PROJET ? PARLONS-EN, www.starc.be, info@starc.be, +32 81 98 08 40, Gembloux. |
+| 10 | compositions/10-contact.html | 82 | 8 | Animation officielle du logo, UN PROJET ? PARLONS-EN ! puis www.starc.be, info@starc.be, +32 81 98 08 40, Gembloux. |
 
 ## Photos utilisées (assets/projects)
 
