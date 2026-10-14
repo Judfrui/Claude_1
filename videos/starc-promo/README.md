@@ -19,7 +19,7 @@ Vidéo finale : `renders/starc-promo.mp4` (1920 x 1080, 30 i/s, 90 s).
 | 54 à 64 s | 07-forfait | Honoraires au forfait (10/20/20/20/30 %), « Tout est posé noir sur blanc » |
 | 64 à 74 s | 08-sur-mesure | Vos besoins, vos envies, vos contraintes : un projet unique. |
 | 74 à 82 s | 09-references | Mur de réalisations, 500+ références construites. |
-| 82 à 90 s | 10-contact | Un projet ? Parlons-en, www.starc.be |
+| 82 à 90 s | 10-contact | Un projet ? Parlons-en ! www.starc.be |
 
 Les textes, chiffres et photos proviennent de www.starc.be. La charte STARC est
 respectée : noir et blanc uniquement pour le graphisme, Bebas Neue et Montserrat,
