@@ -5,9 +5,15 @@ Voix générée avec Magnific (ElevenLabs v3), voix « Julien Bouchard »
 indiqué dans la colonne « Départ » pour que les mots clés tombent sur les
 images (par exemple « noir sur blanc » au moment où l'écran bascule en blanc).
 
-Fichier attendu : `assets/audio/voiceover.wav` (piste continue de 90 s,
-répliques déjà placées), puis activer la piste `el-voiceover` dans
-`index.html` et baisser la musique sous la voix.
+Les répliques sont dans `assets/audio/voix/` (vo01.mp3 à vo10.mp3) et sont
+placées dans `index.html` (pistes `el-vo01` à `el-vo10`, groupe `voiceover`).
+La musique est creusée sous la voix par le « voiceover carve » de HyperFrames
+(attributs `data-fx-carve`, `data-fx-chain` et `data-automation` de `el-bgm`).
+Après avoir déplacé ou remplacé une réplique, relancer le carve :
+
+```bash
+node <skills>/hyperframes-audio/scripts/carve.mjs --comp index.html --strength 0.6
+```
 
 | Scène | Départ | Durée | Texte | Réplique Magnific |
 |-------|--------|-------|-------|-------------------|

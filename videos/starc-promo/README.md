@@ -28,16 +28,17 @@ logo officiel inséré tel quel.
 ## Structure
 
 ```
-index.html              composition principale (enchaîne les 10 scènes + musique)
+index.html              composition principale (10 scènes, musique et voix off)
 compositions/           une sous-composition HTML par scène
 assets/projects/        photos de réalisations (starc.be)
 assets/mosaic/          157 vignettes pour le mur de références
 assets/logos/           animation officielle du logo (version négative)
 assets/fonts/           Bebas Neue et Montserrat
 assets/audio/bgm.mp3    bande-son originale (générée par tools/make_bgm.py)
+assets/audio/voix/      voix off, une réplique par scène (Magnific)
 assets/vendor/          GSAP 3.14.2
 STORYBOARD.md           découpage détaillé
-SCRIPT.md               texte de voix off prêt à enregistrer
+SCRIPT.md               texte et placement de la voix off
 ```
 
 ## Commandes
@@ -49,11 +50,11 @@ npx hyperframes render --quality delivery -o renders/starc-promo.mp4
 python3 tools/make_bgm.py bgm_raw.wav   # régénérer la musique (puis loudnorm ffmpeg)
 ```
 
-## Ajouter la voix off
+## Voix off
 
-1. Enregistrer ou générer le texte de `SCRIPT.md` (une piste continue de 90 s,
-   calée sur les temps indiqués).
-2. Déposer le fichier dans `assets/audio/voiceover.wav`.
-3. Décommenter la ligne `el-voiceover` dans `index.html` et baisser
-   `data-volume` de `el-bgm` vers 0.35.
-4. Relancer le rendu.
+Voix générée avec Magnific (voix « Julien Bouchard »), une réplique par scène :
+texte, temps de départ et liens vers les créations Magnific dans `SCRIPT.md`.
+Pour changer une réplique, remplacer le fichier dans `assets/audio/voix/`,
+ajuster `data-start` et `data-duration` de la piste correspondante dans
+`index.html`, relancer le carve de la musique (commande dans `SCRIPT.md`) puis
+le rendu.

@@ -4,7 +4,7 @@ format: 1920x1080
 fps: 30
 duration: 90
 music: bande-son originale synthétisée (120 BPM, une mesure = 2 s)
-voiceover: non intégrée dans cette version (voir SCRIPT.md)
+voiceover: Magnific, voix « Julien Bouchard », une réplique par scène (voir SCRIPT.md)
 ---
 
 # STARC, film de présentation (90 s)
