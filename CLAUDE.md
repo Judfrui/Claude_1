@@ -80,9 +80,6 @@ Validate with `npx hyperframes lint` and render with
 `npx hyperframes render --quality delivery -o renders/<name>.mp4`.
 STARC visuals follow the brand charter: black and white only, Bebas Neue
 titles, Montserrat text, official logo files inserted as images.
-Voice-over lines are separate `<audio>` clips in the `voiceover` group; after
-moving or replacing one, re-run the hyperframes-audio carve on `el-bgm`
-(strength 0.6) so the music ducks under the voice.
 
 ---
 

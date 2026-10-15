@@ -4,14 +4,14 @@ format: 1920x1080
 fps: 30
 duration: 90
 music: bande-son originale synthétisée (120 BPM, une mesure = 2 s)
-voiceover: Magnific, voix « Charon » (accent neutre), une réplique par scène (voir SCRIPT.md)
+voiceover: aucune, musique seule
 ---
 
 # STARC, film de présentation (90 s)
 
 Objectif : convaincre un maître d'ouvrage du sérieux et du professionnalisme de STARC.
 Les quatre atouts mis en avant : multidisciplinarité, efficacité (chaîne de montage,
-architecte « gentil » et architecte « méchant », 4 équipes, outils de pointe),
+architecte conception et architecte exécution, 4 équipes, outils de pointe),
 honoraires au forfait, approche sur mesure, et 500+ références construites.
 
 ## Direction artistique
@@ -33,7 +33,7 @@ honoraires au forfait, approche sur mesure, et 500+ références construites.
 | 01 | compositions/01-hook.html | 0 | 8 | Un trait devient un plan de façade, puis la photo d'une réalisation se « construit » de bas en haut. DU PREMIER TRAIT / À LA DERNIÈRE PIERRE. Trois coupes rapides : CONCEVOIR, CALCULER, CONSTRUIRE. |
 | 02 | compositions/02-logo.html | 8 | 6 | Animation officielle du logo STARC (version négative), puis BÂTIR AVEC RIGUEUR |
 | 03 | compositions/03-equipe.html | 14 | 10 | TOUT SOUS UN MÊME TOIT : la courbe du logo STARC (entre le A et le R) se trace, 9 métiers apparaissent un à un, puis 25 collaborateurs, 0 sous-traitance, 1 interlocuteur. |
-| 04 | compositions/04-chaine.html | 24 | 14 | ORGANISÉS COMME UNE CHAÎNE DE MONTAGE : 5 postes (esquisse, permis, exécution, appel d'offres, chantier), un projet avance et se construit. L'architecte « gentil » (auréole) et l'architecte « méchant » (cornes). CHACUN SON RÔLE · ZÉRO TEMPS MORT |
+| 04 | compositions/04-chaine.html | 24 | 14 | ORGANISÉS COMME UNE CHAÎNE DE MONTAGE : 5 postes (esquisse, permis, exécution, appel d'offres, chantier), un projet avance et se construit. L'architecte conception et l'architecte exécution. CHACUN SON RÔLE · ZÉRO TEMPS MORT |
 | 05 | compositions/05-equipes.html | 38 | 8 | La chaîne se démultiplie en 4 équipes, épaulées par dessinateurs 2D/3D, ingénieurs, architectes d'intérieur. CAPACITÉ, RÉACTIVITÉ |
 | 06 | compositions/06-outils.html | 46 | 8 | DES OUTILS À LA POINTE : scanner 3D (nuage de points), drone (photo aérienne + viseur), rendus 3D (trait puis rendu). |
 | 07 | compositions/07-forfait.html | 54 | 10 | HONORAIRES AU FORFAIT : barre en 5 phases (10/20/20/20/30 %), puis l'écran bascule en blanc : TOUT EST POSÉ NOIR SUR BLANC |
