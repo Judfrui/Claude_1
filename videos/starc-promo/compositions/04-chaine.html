@@ -62,16 +62,16 @@
         </svg>
 
         <div class="s4-who" id="s4-who-a" style="left: 200px;">
-          <svg viewBox="0 0 56 64"><ellipse id="s4-halo" cx="28" cy="7" rx="13" ry="3.6" /><circle cx="28" cy="24" r="10" /><path d="M8 62 C8 47 17 40 28 40 C39 40 48 47 48 62" /></svg>
+          <svg viewBox="0 0 56 64"><circle cx="28" cy="24" r="10" /><path d="M8 62 C8 47 17 40 28 40 C39 40 48 47 48 62" /></svg>
           <div>
-            <div class="s4-who-name">L'ARCHITECTE «&nbsp;GENTIL&nbsp;»</div>
+            <div class="s4-who-name">L'ARCHITECTE CONCEPTION</div>
             <div class="s4-who-sub">CONCEPTION &amp; PERMIS</div>
           </div>
         </div>
         <div class="s4-who" id="s4-who-b" style="left: 960px;">
-          <svg viewBox="0 0 56 64"><path id="s4-horns" d="M21 16 C17 12 17 7 19 2 C21 7 23 10 26 14 M35 16 C39 12 39 7 37 2 C35 7 33 10 30 14" /><circle cx="28" cy="24" r="10" /><path d="M8 62 C8 47 17 40 28 40 C39 40 48 47 48 62" /></svg>
+          <svg viewBox="0 0 56 64"><circle cx="28" cy="24" r="10" /><path d="M8 62 C8 47 17 40 28 40 C39 40 48 47 48 62" /></svg>
           <div>
-            <div class="s4-who-name">L'ARCHITECTE «&nbsp;MÉCHANT&nbsp;»</div>
+            <div class="s4-who-name">L'ARCHITECTE EXÉCUTION</div>
             <div class="s4-who-sub">EXÉCUTION, APPEL D'OFFRES &amp; CHANTIER</div>
           </div>
         </div>
@@ -149,15 +149,13 @@
       });
       tl.fromTo("#s4-openings", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.7, ease: "power2.out" }, 9.4);
 
-      // Le « gentil » et le « méchant »
+      // L'architecte conception et l'architecte exécution
       tl.fromTo("#s4-br-a", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.8, ease: "power3.inOut" }, 2.3);
       tl.fromTo("#s4-who-a", { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 2.5);
-      tl.fromTo("#s4-halo", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 3.0);
       tl.fromTo("#s4-relay-line", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.6, ease: "power3.inOut" }, 4.6);
       tl.fromTo("#s4-relay", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 4.85);
       tl.fromTo("#s4-br-b", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.9, ease: "power3.inOut" }, 5.0);
       tl.fromTo("#s4-who-b", { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 5.2);
-      tl.fromTo("#s4-horns", { opacity: 0, y: 6 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 5.7);
 
       // Conclusion
       tl.fromTo("#s4-final span", { yPercent: 135 }, { yPercent: 0, duration: 0.7, ease: "expo.out", stagger: 0.1 }, 9.9);
