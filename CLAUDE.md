@@ -79,7 +79,9 @@ Corbu is a Python package (FastAPI + SQLite + Jinja2, openpyxl, python-docx).
 Its UI, code identifiers and docs are in French and target Belgian practice
 (CSC, métré récapitulatif, modes QF/QP/FF/PM). Install with
 `pip install -e "corbu[dev]"`, test with `python -m pytest corbu/tests`,
-run with `corbu` (or `python -m corbu`).
+run with `corbu` (or `python -m corbu`). The Windows installer is built by
+`.github/workflows/windows.yml` (PyInstaller + Inno Setup,
+`corbu/packaging/`); it cannot be built from Linux.
 
 Video projects under `videos/` are HyperFrames compositions (HTML + GSAP).
 Validate with `npx hyperframes lint` and render with

@@ -47,7 +47,30 @@ s'importent en une seule fois.**
 
 Corbu n'a pas de protection matérielle (clé USB) ni de licence à activer.
 
-## Installation
+## Installation sous Windows
+
+GitHub construit l'installateur à chaque modification, dans l'onglet
+**Actions**, workflow « Corbu Windows ». Le fichier se télécharge dans
+**Artifacts**, en bas de la page d'une exécution :
+
+- `Corbu-<version>-installation.exe` : l'installateur. Il crée les raccourcis
+  dans le menu Démarrer et ne demande pas de droits administrateur ;
+- `Corbu-<version>-portable.zip` : la même application sans installation. On
+  la décompresse, puis on lance `Corbu.exe`.
+
+`Corbu.exe` ouvre une fenêtre noire (le serveur) puis le navigateur. Pour
+arrêter Corbu, il suffit de fermer la fenêtre. Les données se trouvent dans
+`%LOCALAPPDATA%\Corbu\corbu.db`, qu'il faut inclure dans vos sauvegardes.
+
+Le raccourci « Corbu (serveur pour le réseau du bureau) » rend Corbu accessible
+aux autres postes, à l'adresse `http://<nom-du-poste>:8000`. Au premier
+lancement, Windows demande d'autoriser l'accès au réseau privé.
+
+L'installateur n'est pas signé : Windows SmartScreen affiche donc un
+avertissement. Pour continuer, cliquez sur « Informations complémentaires »,
+puis sur « Exécuter quand même ».
+
+## Installation depuis les sources
 
 Il faut Python 3.10 ou plus récent.
 
@@ -88,6 +111,7 @@ corbu/
 │   ├── data/           # bibliothèque de départ
 │   ├── templates/      # pages HTML (Jinja2)
 │   └── static/
+├── packaging/          # lanceur PyInstaller et installateur Inno Setup
 └── tests/
 ```
 
