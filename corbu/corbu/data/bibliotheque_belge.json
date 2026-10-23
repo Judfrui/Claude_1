@@ -1,0 +1,184 @@
+{
+  "lots": [
+    {
+      "code": "00",
+      "titre": "Clauses générales et installation de chantier",
+      "articles": [
+        {"code": "00.01", "titre": "Installation et repli de chantier", "unite": "ff", "mode": "FF",
+         "description": "Amenée et repli du matériel, baraquements, sanitaires de chantier, raccordements provisoires (eau, électricité), clôture et signalisation conformes à la réglementation, panneau de chantier. Remise en état des lieux en fin de travaux."},
+        {"code": "00.02", "titre": "Coordination sécurité-santé : mesures imposées", "unite": "ff", "mode": "FF",
+         "description": "Mise en œuvre des mesures prévues au plan de sécurité et de santé établi par le coordinateur sécurité-santé, protections collectives comprises."},
+        {"code": "00.03", "titre": "Gestion des déchets de chantier", "unite": "ff", "mode": "FF",
+         "description": "Tri sélectif sur chantier, évacuation vers des filières agréées et remise des bordereaux de traçabilité au maître de l'ouvrage."}
+      ]
+    },
+    {
+      "code": "01",
+      "titre": "Démolitions",
+      "articles": [
+        {"code": "01.01", "titre": "Démolition de maçonneries", "unite": "m³", "mode": "QP",
+         "description": "Démolition soignée de maçonneries de toute nature, y compris étançonnement provisoire nécessaire, chargement et évacuation des décombres."},
+        {"code": "01.02", "titre": "Démontage de menuiseries existantes", "unite": "pce", "mode": "QF",
+         "description": "Démontage des châssis, portes et tablettes existants, y compris évacuation et protection des maçonneries conservées."},
+        {"code": "01.03", "titre": "Inventaire amiante : désamiantage", "unite": "ff", "mode": "PM",
+         "description": "Désamiantage des éléments repérés dans l'inventaire amiante par une entreprise agréée. Poste pour mémoire, à valoriser selon l'inventaire."}
+      ]
+    },
+    {
+      "code": "02",
+      "titre": "Terrassements et fondations",
+      "articles": [
+        {"code": "02.01", "titre": "Décapage de la terre arable", "unite": "m²", "mode": "QF",
+         "description": "Décapage sur 30 cm d'épaisseur, stockage sur site en vue de sa réutilisation pour les abords."},
+        {"code": "02.02", "titre": "Fouilles en tranchée pour fondations", "unite": "m³", "mode": "QF",
+         "description": "Fouilles exécutées jusqu'au sol portant, y compris blindage si nécessaire, épuisement des eaux et évacuation des terres excédentaires."},
+        {"code": "02.03", "titre": "Semelles de fondation en béton armé", "unite": "m³", "mode": "QF",
+         "description": "Béton armé coulé en place conforme à la NBN EN 206 et à son complément belge, armatures selon l'étude de stabilité, béton de propreté compris."},
+        {"code": "02.04", "titre": "Boucle de terre", "unite": "m", "mode": "QF",
+         "description": "Conducteur de terre en cuivre nu placé en fond de fouille, conforme au RGIE, avec sortie pour raccordement au tableau."}
+      ]
+    },
+    {
+      "code": "03",
+      "titre": "Égouttage",
+      "articles": [
+        {"code": "03.01", "titre": "Canalisations d'égouttage en PVC", "unite": "m", "mode": "QF",
+         "description": "Tuyaux PVC à emboîtement certifiés BENOR, posés sur lit de sable stabilisé, pente minimale de 1 cm/m, raccords et pièces spéciales compris."},
+        {"code": "03.02", "titre": "Chambre de visite", "unite": "pce", "mode": "QF",
+         "description": "Chambre de visite préfabriquée en béton avec couvercle étanche, y compris raccordements."},
+        {"code": "03.03", "titre": "Citerne d'eau de pluie", "unite": "pce", "mode": "QF",
+         "description": "Citerne en béton de capacité selon le permis d'urbanisme, trop-plein vers l'exutoire et filtre."}
+      ]
+    },
+    {
+      "code": "04",
+      "titre": "Gros œuvre",
+      "articles": [
+        {"code": "04.01", "titre": "Maçonnerie portante en blocs de béton", "unite": "m²", "mode": "QF",
+         "description": "Blocs de béton lourds, épaisseur selon plans, maçonnés au mortier, y compris linteaux, armatures de joints et membranes d'étanchéité au pied des murs."},
+        {"code": "04.02", "titre": "Parement en briques de terre cuite", "unite": "m²", "mode": "QF",
+         "description": "Briques de parement au choix de l'architecte sur échantillons, crochets de mur, joints rejointoyés, ouvertures d'aération et de drainage au pied du mur creux."},
+        {"code": "04.03", "titre": "Isolation de mur creux", "unite": "m²", "mode": "QF",
+         "description": "Panneaux isolants rigides posés jointifs dans la coulisse, épaisseur conforme aux exigences PEB, joints fermés."},
+        {"code": "04.04", "titre": "Hourdis en béton précontraint", "unite": "m²", "mode": "QF",
+         "description": "Dalles alvéolées précontraintes selon l'étude de stabilité, y compris clavetage et chape de compression éventuelle."}
+      ]
+    },
+    {
+      "code": "05",
+      "titre": "Charpente",
+      "articles": [
+        {"code": "05.01", "titre": "Charpente traditionnelle en bois résineux", "unite": "m³", "mode": "QF",
+         "description": "Bois de classe de résistance selon l'étude, traité contre les insectes et les champignons, assemblages et quincaillerie compris."},
+        {"code": "05.02", "titre": "Structure en ossature bois", "unite": "m²", "mode": "QF",
+         "description": "Ossature bois préfabriquée ou montée sur place, panneaux de contreventement, pare-vapeur et pare-pluie."}
+      ]
+    },
+    {
+      "code": "06",
+      "titre": "Couverture et étanchéité",
+      "articles": [
+        {"code": "06.01", "titre": "Couverture en tuiles de terre cuite", "unite": "m²", "mode": "QF",
+         "description": "Tuiles au choix de l'architecte, sous-toiture, contre-lattes et lattes, accessoires de rive, faîtage et ventilation compris."},
+        {"code": "06.02", "titre": "Toiture plate : étanchéité EPDM", "unite": "m²", "mode": "QF",
+         "description": "Membrane EPDM collée sur isolant PIR, pare-vapeur, relevés et rives, selon les NIT de Buildwise (ex-CSTC)."},
+        {"code": "06.03", "titre": "Gouttières et descentes en zinc", "unite": "m", "mode": "QF",
+         "description": "Zinc naturel, crochets, naissances et dauphins en fonte au pied des descentes."}
+      ]
+    },
+    {
+      "code": "07",
+      "titre": "Menuiseries extérieures",
+      "articles": [
+        {"code": "07.01", "titre": "Châssis en aluminium à rupture de pont thermique", "unite": "m²", "mode": "QF",
+         "description": "Profilés aluminium thermolaqués, double ou triple vitrage selon les exigences PEB, quincaillerie, membranes d'étanchéité à l'air et calfeutrement compris."},
+        {"code": "07.02", "titre": "Porte d'entrée", "unite": "pce", "mode": "QF",
+         "description": "Porte d'entrée isolée avec serrure multipoints, cylindre de sécurité et seuil à rupture thermique."},
+        {"code": "07.03", "titre": "Seuils en pierre bleue", "unite": "m", "mode": "QF",
+         "description": "Pierre bleue de Belgique, finition adoucie, avec casse-goutte et pente d'écoulement."}
+      ]
+    },
+    {
+      "code": "08",
+      "titre": "Parachèvements : plafonnage et cloisons",
+      "articles": [
+        {"code": "08.01", "titre": "Enduit de plâtre sur maçonnerie", "unite": "m²", "mode": "QF",
+         "description": "Plafonnage en une couche, cornières d'angle, prêt à peindre."},
+        {"code": "08.02", "titre": "Cloisons en plaques de plâtre sur ossature", "unite": "m²", "mode": "QF",
+         "description": "Ossature métallique, deux plaques par face, isolation acoustique en laine minérale, joints enduits."}
+      ]
+    },
+    {
+      "code": "09",
+      "titre": "Chapes et revêtements de sol",
+      "articles": [
+        {"code": "09.01", "titre": "Isolation de sol projetée en PUR", "unite": "m²", "mode": "QF",
+         "description": "Mousse polyuréthane projetée, épaisseur selon les exigences PEB, enrobage des canalisations."},
+        {"code": "09.02", "titre": "Chape de ciment", "unite": "m²", "mode": "QF",
+         "description": "Chape flottante armée sur isolation, bandes de désolidarisation périphériques, épaisseur minimale de 6 cm."},
+        {"code": "09.03", "titre": "Carrelage en grès cérame", "unite": "m²", "mode": "QF",
+         "description": "Carreaux au choix de l'architecte, pose collée, joints et plinthes assorties."}
+      ]
+    },
+    {
+      "code": "10",
+      "titre": "Menuiseries intérieures",
+      "articles": [
+        {"code": "10.01", "titre": "Portes intérieures", "unite": "pce", "mode": "QF",
+         "description": "Bloc-porte à peindre, chambranles, quincaillerie et serrure à clé."},
+        {"code": "10.02", "titre": "Escalier en bois", "unite": "pce", "mode": "QF",
+         "description": "Escalier en hêtre ou chêne, garde-corps et main courante conformes aux exigences de sécurité."}
+      ]
+    },
+    {
+      "code": "11",
+      "titre": "Sanitaires",
+      "articles": [
+        {"code": "11.01", "titre": "Alimentations en eau", "unite": "ff", "mode": "FF",
+         "description": "Réseau d'eau froide et chaude en multicouche, collecteurs, vannes d'isolement, conforme au Belgaqua."},
+        {"code": "11.02", "titre": "Appareils sanitaires", "unite": "pce", "mode": "QF",
+         "description": "Fourniture et pose des appareils selon la liste annexée, robinetterie comprise."}
+      ]
+    },
+    {
+      "code": "12",
+      "titre": "Chauffage et ventilation",
+      "articles": [
+        {"code": "12.01", "titre": "Pompe à chaleur air-eau", "unite": "pce", "mode": "QF",
+         "description": "Pompe à chaleur dimensionnée selon l'étude thermique, ballon d'eau chaude sanitaire, régulation et mise en service."},
+        {"code": "12.02", "titre": "Chauffage par le sol", "unite": "m²", "mode": "QF",
+         "description": "Tubes PE-Xa sur plaques à plots, collecteurs et thermostats par zone."},
+        {"code": "12.03", "titre": "Ventilation double flux (système D)", "unite": "ff", "mode": "FF",
+         "description": "Groupe à récupération de chaleur, gaines, bouches et rapport de mesure des débits pour la déclaration PEB."}
+      ]
+    },
+    {
+      "code": "13",
+      "titre": "Électricité",
+      "articles": [
+        {"code": "13.01", "titre": "Installation électrique complète", "unite": "ff", "mode": "FF",
+         "description": "Tableau, circuits, prises et points lumineux selon les plans, contrôle de conformité RGIE par un organisme agréé compris."},
+        {"code": "13.02", "titre": "Panneaux photovoltaïques", "unite": "kWc", "mode": "QF",
+         "description": "Modules, onduleur, fixations et raccordement au réseau, déclaration au gestionnaire de réseau."}
+      ]
+    },
+    {
+      "code": "14",
+      "titre": "Peintures",
+      "articles": [
+        {"code": "14.01", "titre": "Peinture des murs et plafonds intérieurs", "unite": "m²", "mode": "QF",
+         "description": "Préparation des supports, une couche d'impression et deux couches de finition acrylique mate."}
+      ]
+    },
+    {
+      "code": "15",
+      "titre": "Abords",
+      "articles": [
+        {"code": "15.01", "titre": "Allée en pavés drainants", "unite": "m²", "mode": "QF",
+         "description": "Fondation en empierrement, lit de pose et pavés drainants en béton, bordures comprises."},
+        {"code": "15.02", "titre": "Engazonnement", "unite": "m²", "mode": "QP",
+         "description": "Régalage de la terre arable stockée, amendement et semis."}
+      ]
+    }
+  ]
+}

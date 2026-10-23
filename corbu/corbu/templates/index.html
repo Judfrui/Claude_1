@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block titre %}Projets{% endblock %}
+{% block contenu %}
+<h1>Projets</h1>
+<p class="sous-titre">Cahier spécial des charges, métré récapitulatif et analyse des offres.</p>
+<table>
+  <tr><th>Projet</th><th>Référence</th><th>Maître de l'ouvrage</th><th>Créé le</th><th></th></tr>
+  {% for p in projets %}
+  <tr>
+    <td><a href="/projets/{{ p.id }}">{{ p.nom }}</a></td>
+    <td>{{ p.reference }}</td>
+    <td>{{ p.maitre_ouvrage }}</td>
+    <td>{{ p.cree_le }}</td>
+    <td><a href="/projets/{{ p.id }}/offres">Offres</a></td>
+  </tr>
+  {% else %}
+  <tr><td colspan="5">Aucun projet pour l'instant.</td></tr>
+  {% endfor %}
+</table>
+<h2>Nouveau projet</h2>
+<form class="ligne" method="post" action="/projets">
+  <label>Nom <input name="nom" required></label>
+  <label>Référence <input name="reference"></label>
+  <label>Maître de l'ouvrage <input name="maitre_ouvrage"></label>
+  <label>Adresse du chantier <input name="adresse"></label>
+  <button>Créer</button>
+</form>
+{% endblock %}

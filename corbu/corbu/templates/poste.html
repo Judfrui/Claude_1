@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block titre %}{{ poste.code }} {{ poste.titre }}{% endblock %}
+{% block contenu %}
+<p><a href="/projets/{{ poste.projet_id }}">← Lot {{ poste.lot_code }} — {{ poste.lot_titre }}</a></p>
+<h1>{{ poste.code }} {{ poste.titre }}</h1>
+
+<form method="post" action="/postes/{{ poste.id }}" class="carte">
+  <div class="ligne">
+    <label>Intitulé <input name="titre" value="{{ poste.titre }}" size="50" required></label>
+    <label>Unité <input name="unite" value="{{ poste.unite }}" size="6"></label>
+    <label>Mode de métré
+      <select name="mode">{% for k, v in MODES.items() %}<option value="{{ k }}" {% if k == poste.mode %}selected{% endif %}>{{ k }} — {{ v }}</option>{% endfor %}</select>
+    </label>
+    <label>Prix unitaire estimé (€) <input name="prix_unitaire" value="{{ poste.prix_unitaire|eur }}" size="10"></label>
+  </div>
+  <label>Description (clauses techniques du CSC)
+    <textarea name="description">{{ poste.description }}</textarea>
+  </label>
+  <p><button>Enregistrer</button></p>
+</form>
+
+<h2>Métré détaillé</h2>
+<table>
+  <tr><th>Libellé</th><th>Formule</th><th class="n">Résultat</th><th></th></tr>
+  {% for l in lignes %}
+  <tr>
+    <td>{{ l.libelle }}</td><td><code>{{ l.formule }}</code></td><td class="n">{{ l.valeur|qte }}</td>
+    <td><form class="inline" method="post" action="/metre/{{ l.id }}/supprimer"><button class="danger">×</button></form></td>
+  </tr>
+  {% endfor %}
+  <tr class="total"><td>Quantité totale</td><td></td><td class="n">{{ quantite|qte }} {{ poste.unite }}</td><td></td></tr>
+</table>
+<form class="ligne" method="post" action="/postes/{{ poste.id }}/metre">
+  <label>Libellé <input name="libelle" placeholder="Façade avant" size="30"></label>
+  <label>Formule <input name="formule" placeholder="12,40 x 2,80 - 2 x 1,20 x 2,10" size="40" required></label>
+  <button>Ajouter</button>
+</form>
+<p class="sous-titre">Opérations admises : + − × (ou x) / et parenthèses ; la virgule décimale est acceptée. Une valeur négative déduit une ouverture.</p>
+
+<form method="post" action="/postes/{{ poste.id }}/supprimer" onsubmit="return confirm('Supprimer ce poste ?')">
+  <button class="danger">Supprimer le poste</button>
+</form>
+{% endblock %}

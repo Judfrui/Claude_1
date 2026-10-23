@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block titre %}Bibliothèque{% endblock %}
+{% block contenu %}
+<h1>Bibliothèque</h1>
+<p class="sous-titre">Lots et articles réutilisables. Les postes copiés dans un projet sont indépendants : modifier la bibliothèque ne change pas les documents déjà établis.</p>
+<div class="actions">
+  <a class="bouton discret" href="/bibliotheque.json">Exporter (JSON)</a>
+  <form class="ligne" method="post" action="/bibliotheque/import" enctype="multipart/form-data" style="margin:0">
+    <input type="file" name="fichier_json" accept=".json" required>
+    <button class="discret">Importer</button>
+  </form>
+</div>
+
+<details class="carte">
+  <summary>Nouvel article ou modification (même code = mise à jour)</summary>
+  <form method="post" action="/bibliotheque/articles">
+    <div class="ligne">
+      <label>Code lot <input name="lot_code" size="5" required></label>
+      <label>Intitulé du lot <input name="lot_titre"></label>
+      <label>Code article <input name="code" size="8" required></label>
+      <label>Intitulé <input name="titre" size="40" required></label>
+      <label>Unité <input name="unite" size="5"></label>
+      <label>Mode <select name="mode">{% for k, v in MODES.items() %}<option value="{{ k }}">{{ k }} — {{ v }}</option>{% endfor %}</select></label>
+      <label>Prix de référence (€) <input name="prix_ref" size="8"></label>
+    </div>
+    <label>Description <textarea name="description"></textarea></label>
+    <p><button>Enregistrer</button></p>
+  </form>
+</details>
+
+{% for lot in lots %}
+<h2>Lot {{ lot.code }} — {{ lot.titre }}</h2>
+<table>
+  <tr><th>Code</th><th>Intitulé et description</th><th>Unité</th><th>Mode</th><th class="n">Prix réf.</th><th></th></tr>
+  {% for a in lot.articles %}
+  <tr>
+    <td>{{ a.code }}</td>
+    <td><details><summary>{{ a.titre }}</summary>{{ a.description }}</details></td>
+    <td>{{ a.unite }}</td><td><span class="badge" title="{{ MODES[a.mode] }}">{{ a.mode }}</span></td>
+    <td class="n">{{ a.prix_ref|eur }}</td>
+    <td><form class="inline" method="post" action="/bibliotheque/articles/{{ a.id }}/supprimer" onsubmit="return confirm('Supprimer cet article ?')"><button class="danger">×</button></form></td>
+  </tr>
+  {% endfor %}
+</table>
+{% endfor %}
+{% endblock %}

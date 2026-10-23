@@ -70,10 +70,16 @@ As this project is new, the structure will be defined as development progresses.
 ```
 <root>/
 ├── CLAUDE.md          # This file
-├── README.md          # Project overview and setup instructions
+├── corbu/             # Corbu: open-source CSC / métré / bid analysis app (see corbu/README.md)
 └── videos/
     └── starc-promo/   # HyperFrames promo film for STARC (see its README.md)
 ```
+
+Corbu is a Python package (FastAPI + SQLite + Jinja2, openpyxl, python-docx).
+Its UI, code identifiers and docs are in French and target Belgian practice
+(CSC, métré récapitulatif, modes QF/QP/FF/PM). Install with
+`pip install -e "corbu[dev]"`, test with `python -m pytest corbu/tests`,
+run with `corbu` (or `python -m corbu`).
 
 Video projects under `videos/` are HyperFrames compositions (HTML + GSAP).
 Validate with `npx hyperframes lint` and render with
@@ -89,7 +95,7 @@ titles, Montserrat text, official logo files inserted as images.
 - Run the full test suite before pushing.
 - Do not skip tests or use workarounds to make tests pass artificially.
 
-Update this section with actual test commands once a testing framework is established.
+- Corbu: `python -m pytest corbu/tests` (pytest, FastAPI TestClient).
 
 ---
 

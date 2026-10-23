@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "corbu"
+version = "0.1.0"
+description = "Pièces écrites et analyse d'offres pour bureaux d'architectes et d'études (Belgique)"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.110",
+    "uvicorn>=0.29",
+    "jinja2>=3.1",
+    "python-multipart>=0.0.9",
+    "openpyxl>=3.1",
+    "python-docx>=1.1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "httpx>=0.27"]
+
+[project.scripts]
+corbu = "corbu.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["corbu*"]
+
+[tool.setuptools.package-data]
+corbu = ["templates/*.html", "static/*", "data/*.json"]

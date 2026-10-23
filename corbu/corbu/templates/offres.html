@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block titre %}Offres — {{ projet.nom }}{% endblock %}
+{% block contenu %}
+<p><a href="/projets/{{ projet.id }}">← {{ projet.nom }}</a></p>
+<h1>Analyse des offres</h1>
+<p class="sous-titre">Importez en une seule fois les offres de tous les soumissionnaires. Chaque fichier peut couvrir un ou plusieurs lots : les prix sont rattachés aux postes par leur code.</p>
+
+<form class="carte" method="post" action="/projets/{{ projet.id }}/offres" enctype="multipart/form-data">
+  <label>Fichiers d'offres (.xlsx) — sélection multiple possible
+    <input type="file" name="fichiers" accept=".xlsx,.xlsm" multiple required>
+  </label>
+  <p><button>Importer et analyser</button></p>
+  <p class="sous-titre">Le nom du soumissionnaire est lu dans la cellule « Soumissionnaire » du métré, à défaut dans le nom du fichier. Une nouvelle remise d'une même entreprise remplace la précédente.</p>
+</form>
+
+{% if rapport %}
+<h2>Résultat de l'import</h2>
+<table>
+  <tr><th>Fichier</th><th>Soumissionnaire</th><th>Lots détectés</th><th class="n">Postes chiffrés</th><th>Remarques</th></tr>
+  {% for r in rapport %}
+  <tr>
+    <td>{{ r.fichier }}</td>
+    {% if r.erreur %}<td colspan="4" class="erreur">{{ r.erreur }}</td>
+    {% else %}
+    <td>{{ r.entreprise }}</td><td>{{ r.lots|join(", ") }}</td><td class="n">{{ r.postes }}</td>
+    <td>{% if r.inconnus %}<span class="erreur">Codes inconnus ignorés : {{ r.inconnus|join(", ") }}</span>{% endif %}</td>
+    {% endif %}
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}
+
+{% if analyse.offres %}
+<h2>Offres reçues</h2>
+<table>
+  <tr><th>Soumissionnaire</th><th class="n">Lots remis</th><th>Offre complète</th><th class="n">Total corrigé HTVA</th><th>Fichier</th><th></th></tr>
+  {% for g in analyse.synthese.globales %}
+  <tr>
+    <td>{{ g.offre.entreprise }}</td><td class="n">{{ g.lots }}</td><td>{{ "oui" if g.complete else "non" }}</td>
+    <td class="n">{{ g.total|eur }}</td><td>{{ g.offre.fichier }}</td>
+    <td><form class="inline" method="post" action="/offres/{{ g.offre.id }}/supprimer" onsubmit="return confirm('Supprimer cette offre ?')"><button class="danger">supprimer</button></form></td>
+  </tr>
+  {% endfor %}
+</table>
+
+<h2>Synthèse par lot</h2>
+<form class="ligne" method="get">
+  <label>Seuil de prix anormal (%) <input type="number" name="seuil" value="{{ seuil }}" min="1" max="200"></label>
+  <button class="discret">Recalculer</button>
+  <a class="bouton" href="/projets/{{ projet.id }}/analyse.xlsx?seuil={{ seuil }}">Rapport d'analyse (Excel)</a>
+</form>
+<table>
+  <tr><th>Lot</th><th class="n">Estimation</th><th>Classement (montants corrigés)</th></tr>
+  {% for l in analyse.lots %}
+  <tr>
+    <td>{{ l.lot.code }} — {{ l.lot.titre }}</td>
+    <td class="n">{{ l.lot.total|eur }}</td>
+    <td>
+      {% for c in l.classement %}
+      {{ loop.index }}. <strong>{{ c.offre.entreprise }}</strong> {{ c.corrige|eur }} €
+      {% if c.ecart is not none %}({{ c.ecart|pct }}){% endif %}
+      {% if c.alertes %}<span class="badge">{{ c.alertes }} alerte(s)</span>{% endif %}
+      {% if (c.declare - c.corrige)|abs > 0.01 %}<span class="alertes">montant déclaré {{ c.declare|eur }} €</span>{% endif %}<br>
+      {% else %}<span class="erreur">Aucune offre</span>{% endfor %}
+    </td>
+  </tr>
+  {% endfor %}
+  <tr class="total"><td>Attribution lot par lot au moins-disant</td><td></td><td>{{ analyse.synthese.attribution_par_lot|eur }} €</td></tr>
+</table>
+
+{% for l in analyse.lots if l.offres %}
+<h2>Lot {{ l.lot.code }} — {{ l.lot.titre }}</h2>
+<div class="defile">
+<table>
+  <tr>
+    <th>Code</th><th>Désignation</th><th class="n">Qté</th><th class="n">Estimation</th>
+    {% for o in l.offres %}<th class="n">{{ o.entreprise }}</th>{% endfor %}
+  </tr>
+  {% for ligne in l.lignes %}
+  <tr>
+    <td>{{ ligne.poste.code }}</td><td>{{ ligne.poste.titre }}</td>
+    <td class="n">{% if ligne.poste.mode in ("QF", "QP") %}{{ ligne.poste.quantite|qte }} {{ ligne.poste.unite }}{% else %}{{ ligne.poste.mode }}{% endif %}</td>
+    <td class="n">{{ ligne.estimation|eur }}</td>
+    {% for o in l.offres %}{% set c = ligne.offres[o.id] %}
+    <td class="n {% if c.moins_disant %}moins-disant{% elif c.alertes %}alerte{% endif %}">
+      {{ c.montant|eur }}
+      {% if c.pu is not none and ligne.poste.mode in ("QF", "QP") %}<span class="badge">PU {{ c.pu|eur }}</span>{% endif %}
+      {% for a in c.alertes %}<span class="alertes">{{ a }}</span>{% endfor %}
+    </td>
+    {% endfor %}
+  </tr>
+  {% endfor %}
+  <tr class="total">
+    <td></td><td>Total corrigé</td><td></td><td class="n">{{ l.lot.total|eur }}</td>
+    {% for o in l.offres %}<td class="n">{{ l.totaux[o.id].corrige|eur }}</td>{% endfor %}
+  </tr>
+</table>
+</div>
+{% endfor %}
+{% endif %}
+{% endblock %}
